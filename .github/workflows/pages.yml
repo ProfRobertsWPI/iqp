@@ -4,6 +4,10 @@ on:
   push:
     branches: [main]
     paths:
+      - "Prof Roberts_IQP Writing Guide_2026.docx"
+      - "scripts/convert-guide.py"
+      - "scripts/test_convert_guide.py"
+      - "scripts/test-theme.cjs"
       - "docs/**"
       - ".github/workflows/pages.yml"
   workflow_dispatch:
@@ -17,14 +21,53 @@ concurrency:
 
 jobs:
   build:
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+      - name: Install Pandoc 3.12
+        shell: bash
+        run: |
+          curl --fail --location --retry 3 \
+            https://github.com/jgm/pandoc/releases/download/3.12/pandoc-3.12-linux-amd64.tar.gz \
+            --output "$RUNNER_TEMP/pandoc.tar.gz"
+          tar -xzf "$RUNNER_TEMP/pandoc.tar.gz" -C "$RUNNER_TEMP"
+          echo "$RUNNER_TEMP/pandoc-3.12/bin" >> "$GITHUB_PATH"
+      - name: Regenerate and check the guide
+        run: |
+          python scripts/convert-guide.py
+          python scripts/convert-guide.py --check
+          python -m unittest discover -s scripts -p 'test_*.py'
+          node --test scripts/test-theme.cjs
       - uses: actions/configure-pages@v5
       - uses: actions/jekyll-build-pages@v1
         with:
           source: ./docs
           destination: ./_site
+      - name: Check published links and heading anchors
+        env:
+          IQP_SITE_BUILD: ${{ github.workspace }}/_site
+        run: python -m unittest discover -s scripts -p 'test_*.py'
+      - name: Commit regenerated guide
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- docs
+          if ! git diff --cached --quiet; then
+            git commit -m "Regenerate writing guide from Word source"
+            git push origin HEAD:main
+          fi
       - uses: actions/upload-pages-artifact@v3
         with:
           path: ./_site

@@ -3,6 +3,158 @@
 The GitHub Pages edition of **IQP Writing Guide: From Proposal to Final Report**
 is generated from `Prof Roberts_IQP Writing Guide_2026.docx`.
 
+**Published guide:** <https://profrobertswpi.github.io/iqp/>
+
+## Start here: maintaining the guide
+
+**The author should make lasting content changes in the Word document,
+not in the generated chapter Markdown files.** Running the converter replaces
+those Markdown files. The Word document, worksheet files, converter, and
+generated website files are all kept in this repository.
+
+The normal update process is:
+
+1. **Edit:** revise the Word document and save it under its existing filename.
+2. **Upload/merge:** commit the revised document to `main`, or upload it on a
+   branch and merge its pull request into `main`.
+3. **Generate and publish automatically:** GitHub Actions converts Word to
+   Markdown, checks the guide, builds the site, checks the built links,
+   commits any regenerated files to `main`, and deploys the website.
+
+**The author does not need to run the converter locally for routine updates.**
+Updating the source Word document on `main` triggers conversion and publication.
+Wait for the Actions run to succeed before assuming the changes are live.
+The source retains its original filename, `Prof Roberts_IQP Writing Guide_2026.docx`;
+references to that filename below identify the file, not an editing role.
+
+### What to edit for each kind of change
+
+| Change | Where to make it | What happens next |
+| --- | --- | --- |
+| Fix text, lists, captions, or existing table content | The source Word document | Merge to `main`; Actions regenerates and publishes. |
+| Add or replace a guide image | Insert/embed it in the Word document | Merge to `main`; images are extracted to `docs/assets/media/`. |
+| Add a section within an existing chapter | Add a Word heading, using the existing numbering and heading styles | Actions rebuilds chapter contents and sidebar links. Review links to renamed headings. |
+| Replace an existing downloadable worksheet | Replace its file in `docs/assets/worksheets/`, keeping the exact filename | Commit and publish the replacement; no conversion is needed if nothing else changes. |
+| Add or rename a worksheet, or change its associated table's header | Worksheet folder, Word table, and `WORKSHEETS` mapping in the converter | A technical maintainer must update the mapping, regenerate, and update affected tests. |
+| Add an external website link | Use Word's **Insert > Link** on descriptive text | Regenerate and check the destination. |
+| Add a link to another guide section | Use a Word hyperlink to an existing heading, or a supported numbered reference | Regenerate and check both Markdown and site destinations. |
+| Add/remove a chapter, renumber sections, or rename mapped headings | Word document plus converter rules and tests | Coordinate with a technical maintainer; these are structural changes. |
+| Change colors, fonts, theme behavior, or site layout | CSS, theme JavaScript, or shared layout under `docs/` | No Word conversion is needed; review and publish the site files. |
+
+### Routine content edits, step by step
+
+1. Get the latest repository files before editing. A technical maintainer can
+   use Git/GitHub Desktop; avoid starting from an old downloaded copy.
+2. Open `Prof Roberts_IQP Writing Guide_2026.docx` in Word, make changes, save,
+   and close it. Keep that filename unless the converter's `SOURCE` setting
+   is also updated.
+3. Use Word's real heading styles and real bullet/numbered lists, rather than
+   manually formatting ordinary paragraphs to look like headings or lists.
+   Keep chapter titles in the form `Chapter 2 - Building Your Research Story`
+   and numbered section headings in the form `2.1 Introduction`.
+4. Upload/commit the revised document to the repository. In GitHub's web
+   interface, use **Add file > Upload files** at the repository root and keep
+   the exact filename so it replaces the existing source rather than adding
+   a second copy. Commit directly to `main` if permitted, or create a branch
+   and merge its pull request. Include any associated worksheet changes.
+5. Follow the run in **Actions**, then review the published chapter pages,
+   images, worksheet links, and navigation. Pull the latest `main` before the
+   next local edit so the bot's regenerated files are included.
+
+The author does not need Python or Ruby to edit Word or use automatic
+publication. Local conversion remains available for previewing changes before
+merging. For structural changes or a failed workflow, the author can provide
+the revised Word document and any worksheets to the maintainer with a request
+such as:
+
+> Update the guide from the revised Word document. Regenerate the Markdown,
+> images, and navigation, check links and worksheet downloads, and publish
+> the changes to main.
+
+### Adding or replacing images
+
+Insert pictures into the Word document itself, preferably **in line with text**
+in their own paragraphs, with descriptive alternative text and any caption
+readers need. Do not link to an image that exists only on your computer.
+Use common web formats such as PNG or JPEG; unusual Office drawing formats
+need a maintainer's review for browser compatibility.
+
+The converter extracts embedded images and writes Markdown image references.
+Do not replace generated `image1.png`-style files by hand: the next conversion
+can overwrite them, and Word can change media filenames after edits. Review
+the image and its surrounding text after regeneration. Files no longer used
+by Word are not automatically deleted from the asset folder; a maintainer
+should remove obsolete files only after confirming no page references them.
+
+### Adding or replacing worksheets
+
+Worksheets are separate downloadable Word files, not substitutes for the
+tables in the guide. Keep the associated planning table in the source document;
+the converter inserts the download link directly below it.
+
+For an existing worksheet, edit or replace the file under
+`docs/assets/worksheets/` and keep its filename exactly, including spaces,
+capitalization, and dash characters. Merely changing worksheet contents does
+not require regeneration.
+
+For a new worksheet, ask a technical maintainer to:
+
+1. Add the `.docx` file under `docs/assets/worksheets/`.
+2. Add or identify the associated planning table in the source Word document.
+3. Add an entry to `WORKSHEETS` in `scripts/convert-guide.py`: the key is the
+   exact concatenated header text produced by Pandoc, and the value contains
+   the exact filename and reader-facing download label. Follow an existing
+   entry; this is not a fuzzy match on the table's caption or nearby heading.
+4. Regenerate and update worksheet-count/placement expectations in the tests.
+   Confirm the table remains and the new download appears immediately below it.
+
+Changing a mapped table's header can break its match even when the worksheet
+file is unchanged. Renaming/removing a worksheet also requires updating/removing
+its mapping and affected tests. The converter reports missing files, duplicate
+matches, and configured worksheets with no matching table; do not publish
+around those errors.
+
+### Adding links and changing headings
+
+For external resources, insert a normal Word hyperlink using a complete
+`https://` address. Use descriptive labels rather than "click here." Avoid
+local paths such as `C:\...`, which readers cannot access. WPI-only resources
+may still require sign-in; conversion does not make them public.
+
+For internal destinations, link to an existing Word heading using **Insert >
+Link > Place in This Document**. A newly invented bookmark that is not a
+recognized heading is not supported by the current converter. Plain-text
+references such as `Chapter 3` and `Section 2.3` are also linked automatically
+when their targets exist. Not every informal phrase or appendix mention is
+automatically linked: some guide-specific phrases have explicit rules, and
+examples about a student's own report intentionally remain unlinked.
+
+Renaming a heading changes its automatic web/Markdown anchor. Regeneration
+updates generated navigation and recognized references, but cannot repair old
+bookmarks, links from other websites, or every custom reference rule. Ask a
+maintainer to review the rules in `add_cross_references()` after heading or
+numbering changes. In particular, the current converter expects exactly six
+numbered chapters followed by `Resources`; adding a seventh chapter requires
+code and test changes, not just a new Word heading.
+
+If a maintainer works with Markdown links, use these forms (relative to a page
+in `docs/`):
+
+```markdown
+[Another chapter](chapter-03.md)
+[Introduction](chapter-02.md#21-introduction)
+[A section on this page](#21-introduction)
+![Descriptive image text](assets/media/image1.png)
+[Download the introduction worksheet](assets/worksheets/Worksheet_Planning%20your%20introduction.docx)
+[WPI](https://www.wpi.edu/)
+```
+
+Use `.md` page paths, not `.html`, `/iqp/` prefixes, or local filesystem paths.
+Copy the actual heading anchor from the generated chapter contents rather
+than guessing it. URL-encode spaces and punctuation in asset filenames; the
+converter does this for worksheet links. These examples explain the generated
+format, not an alternative to making durable edits in Word.
+
 ## Site structure
 
 - `docs/index.md`: contents and the original author's note / AI disclosure.
@@ -83,17 +235,79 @@ Run theme behavior checks with `node --test scripts\test-theme.cjs`.
 
 ## Publish on GitHub Pages
 
-1. Merge these files into `main`.
-2. In the repository's **Settings > Pages**, select **GitHub Actions** as the
-   build and deployment source.
-3. The **Deploy writing guide to GitHub Pages** workflow publishes changes to
-   `docs/` on `main`. If needed, start it manually from the **Actions** tab.
+### Normal publication
+
+1. Edit the Word source and/or worksheet files. Local regeneration is optional
+   for a preview; Actions always regenerates before publishing.
+2. Commit all relevant source changes together: the changed Word document,
+   any worksheet files, and any converter or test updates needed for structural
+   changes. If you regenerated locally, include those outputs too. Review the
+   diff to avoid including unrelated files.
+3. Push a working branch and open a pull request targeting `main`. Review and
+   merge it. A maintainer with permission may instead push the reviewed commit
+   directly to `main`; that was the publication method used during initial
+   setup. Do not overwrite newer changes on `main`.
+4. Open the repository's **Actions** tab and select **Deploy writing guide to
+   GitHub Pages**. Confirm the run for the new commit completes successfully
+   for both **build** and **deploy**. A successful push alone does not mean
+   the website has finished publishing.
+5. Open the published guide and check the changed pages, sidebar/section links,
+   images, and worksheet downloads. Refresh if the browser shows old content.
+
+The workflow in `.github/workflows/pages.yml` runs when a push to `main`
+changes the source Word document, `scripts/convert-guide.py`,
+`scripts/test_convert_guide.py`, `scripts/test-theme.cjs`, `docs/**`, or the
+workflow itself. It can also be started manually from
+**Actions > Deploy writing guide to GitHub Pages > Run workflow**, selecting
+`main`. Manual runs also regenerate, check, commit, and publish. Runs on other
+branches are skipped. A README-only commit does not trigger publication.
+
+The workflow uses Python 3.11 and Pandoc 3.12, matching the converter's
+development versions. It checks the generated content and theme, builds Jekyll,
+and checks built-site links before committing generated files and deploying.
+When conversion changes files in `docs/`, it creates a
+`Regenerate writing guide from Word source` commit as `github-actions[bot]`.
+If generated output is unchanged, no extra commit is created. The bot commit
+uses the repository's built-in `GITHUB_TOKEN`; it does not trigger another
+workflow run. The original run continues through deployment, so no personal
+access token or second publication run is needed.
+
+### One-time configuration and recovery
+
+In **Settings > Pages**, the build and deployment source must be **GitHub
+Actions**. This is already configured for this repository; it is not a setting
+to change for every publication.
+
+The build job requests `contents: write` so its token can commit generated
+files. Repository/organization policy and branch rules must allow that bot
+push to `main`. If branch protection requires all changes through pull
+requests or disallows bot pushes, a maintainer must arrange an approved
+exception or redesign the generation step to open a pull request instead.
+Do not disable protections blindly. A rejected push fails the run before
+deployment rather than publishing files that were not saved to the repository.
 
 The expected address is <https://profrobertswpi.github.io/iqp/>.
 If you change the repository name or use a custom domain, update `url` and
 `baseurl` in `docs/_config.yml`.
 
+If publication fails, inspect the failed step's log in **Actions**, correct
+the cause, and push the fix or rerun the workflow as appropriate. Do not
+assume the live site includes a failed deployment. To undo a bad published
+change, have a maintainer revert its commit on `main` and let Pages deploy
+again; avoid force-pushing history. Revert the source change as well as its
+generated output when undoing content changes; reverting only generated
+Markdown will be undone by the next conversion.
+
+Runs are serialized, and each build checks out the latest `main`. If `main`
+changes again before the bot can push, Git rejects the non-fast-forward push;
+the workflow never force-pushes. Let the queued run process the latest source
+or manually rerun on `main`. A conversion/test failure also stops publication;
+inspect it for a changed heading, worksheet mapping, or structural expectation.
+
 ## Update from Word
+
+These commands are optional for local preview or troubleshooting; Actions
+runs conversion automatically on `main`.
 
 Install Python 3.11 or later and [Pandoc](https://pandoc.org/installing.html).
 The conversion uses only the Python standard library and Pandoc; this edition
@@ -111,6 +325,44 @@ Commit the regenerated pages and images along with changes to the Word source.
 The converter overwrites generated Markdown pages, so make durable content
 changes in Word rather than editing those pages directly. External resource
 links are preserved as supplied; some point to WPI sign-in-protected resources.
+
+`--check` reports whether generated files match the source without writing
+them. The Python tests check source-text fidelity, page structure, native
+Markdown, local links/images, sidebar destinations, and worksheet placement.
+Without `IQP_SITE_BUILD`, the additional built-site parity test is skipped;
+use [Local preview](#local-preview) for that check. The publication workflow
+runs both the Python and theme checks, including built-site parity after
+building Jekyll.
+
+For changes to theme behavior, also run:
+
+```powershell
+node --test scripts\test-theme.cjs
+```
+
+Some tests intentionally encode the current guide's structure and content.
+When deliberately changing it, review and update only the relevant
+expectations; do not remove checks merely to make a failed conversion pass.
+
+## Design decisions and maintenance boundaries
+
+These decisions were made while creating and refining this edition:
+
+| Decision | Reason and maintenance consequence |
+| --- | --- |
+| Keep Word as the content source of truth | The author can continue editing in Word. Markdown, extracted images, and navigation are generated outputs, not a second independently maintained edition. The converter does not write changes back to Word. |
+| One page per chapter, plus home and Resources/Appendices | Matches the guide's organization without a long single-page site. Current structure checks require six chapters and Resources. |
+| Generate chapter contents, previous/next links, and sidebar | Navigation stays aligned with recognized Word headings. Do not hand-edit `docs/_data/navigation.json`. |
+| Keep guide tables and offer separate worksheet downloads | Readers retain the examples while receiving editable planning tools. Table-header mappings make worksheet association explicit. |
+| Use native GitHub-flavored Markdown | Pages remain readable in the repository as well as on the website. Merged cells and multiline cell layout are simplified; Word-only underlining is removed. Complex new tables may require converter work. |
+| Use `.md` links and automatic heading IDs | Repository links work without a site build; Jekyll's relative-link plugin rewrites them for the published site. Heading changes can change public anchors. |
+| Link guide references, not every mention of a chapter/appendix | References describing students' own reports are not necessarily destinations in this guide. Specific phrases and three stale source references have explicit conversion rules, described above. |
+| Keep site presentation outside chapter content | WPI colors/fonts, responsive navigation, worksheet download behavior, and light/dark mode live in the shared layout/CSS/JavaScript. No licensed fonts or recreated WPI logos are distributed. |
+| Automatically regenerate and publish from `main` | Initially conversion was local; the workflow now converts Word, validates, commits generated output, and deploys in one run. The repository's Markdown stays in sync with the site. Local Python/Pandoc and Ruby are optional preview tools. |
+
+The conversion-time reference corrections do not modify the original Word
+document. If those passages are corrected in Word later, review the matching
+converter rules and fidelity-test expectations together.
 
 ## Local preview
 
