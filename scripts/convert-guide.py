@@ -152,6 +152,18 @@ def convert():
                 ]
 
     files = {}
+    sidebar = [
+        {
+            "title": page["title"],
+            "url": "/" + page["slug"] + ".html",
+            "sections": [
+                {"title": text(block["c"][2]), "anchor": block["c"][1][0]}
+                for block in page["blocks"]
+                if block["t"] == "Header" and block["c"][0] == 2
+            ],
+        }
+        for page in pages
+    ]
     preface = [block for block in document["blocks"][:contents_start] if meaningful(block)]
     home = [
         "# IQP Writing Guide",
@@ -219,6 +231,7 @@ def convert():
         for name in archive.namelist():
             if name.startswith("word/media/") and not name.endswith("/"):
                 media["assets/media/" + Path(name).name] = archive.read(name)
+    files["_data/navigation.json"] = json.dumps(sidebar, ensure_ascii=False, indent=2) + "\n"
     return files, media
 
 
@@ -238,16 +251,18 @@ def main():
         ]
         if stale:
             raise SystemExit("Missing or outdated generated files: " + ", ".join(stale))
-        print(f"Up to date: {len(files)} Markdown pages and {len(media)} images.")
+        print(f"Up to date: {len(files) - 1} Markdown pages, sidebar navigation, and {len(media)} images.")
         return
     OUTPUT.mkdir(exist_ok=True)
     for name, content in files.items():
-        (OUTPUT / name).write_text(content, encoding="utf-8", newline="\n")
+        target = OUTPUT / name
+        target.parent.mkdir(parents=True, exist_ok=True)
+        target.write_text(content, encoding="utf-8", newline="\n")
     for name, content in media.items():
         target = OUTPUT / name
         target.parent.mkdir(parents=True, exist_ok=True)
         target.write_bytes(content)
-    print(f"Generated {len(files)} Markdown pages and {len(media)} images in {OUTPUT}.")
+    print(f"Generated {len(files) - 1} Markdown pages, sidebar navigation, and {len(media)} images in {OUTPUT}.")
 
 
 if __name__ == "__main__":

@@ -16,6 +16,14 @@ inside Markdown to preserve their structure. The printed table of contents and
 its page numbers are replaced by web navigation. Inconsistent Word heading
 levels are normalized for the web.
 
+Every page also has a left sidebar with expandable chapter menus and direct
+links to numbered sections and resource appendices. The current chapter opens
+automatically; the selected section is highlighted when following an anchor
+link. On small screens the navigation becomes a collapsible menu above the
+content. Navigation data in `docs/_data/navigation.json` is regenerated from the
+Word headings along with the chapter pages. The shared layout and responsive
+styles live in `docs/_layouts/default.html` and `docs/assets/site.css`.
+
 ## Publish on GitHub Pages
 
 1. Merge these files into `main`.

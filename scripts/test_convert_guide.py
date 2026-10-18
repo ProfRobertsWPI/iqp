@@ -60,6 +60,7 @@ class GuideTests(unittest.TestCase):
         cls.pages = {
             name.removesuffix(".md") + ".html": Page(render(content, "gfm-gfm_auto_identifiers"))
             for name, content in cls.files.items()
+            if name.endswith(".md")
         }
         cls.source = json.loads(subprocess.run(
             ["pandoc", str(CONVERTER.SOURCE), "--to=json"],
@@ -71,9 +72,11 @@ class GuideTests(unittest.TestCase):
     def test_page_structure(self):
         self.assertEqual(
             set(self.files),
-            {"index.md", "resources.md", *(f"chapter-{n:02d}.md" for n in range(1, 7))},
+            {"index.md", "resources.md", "_data/navigation.json", *(f"chapter-{n:02d}.md" for n in range(1, 7))},
         )
         for name, content in self.files.items():
+            if not name.endswith(".md"):
+                continue
             with self.subTest(page=name):
                 self.assertEqual(len(re.findall(r"^# ", content, re.M)), 1)
                 self.assertNotIn("<!-- chapter-contents -->", content)
@@ -92,6 +95,21 @@ class GuideTests(unittest.TestCase):
                         self.assertIn(unquote(url.fragment), target.targets)
                 for image in page.images:
                     self.assertIn(image, self.media)
+
+    def test_sidebar_covers_chapters_and_sections(self):
+        navigation = json.loads(self.files["_data/navigation.json"])
+        self.assertEqual(len(navigation), 7)
+        for chapter in navigation:
+            page = self.pages[chapter["url"].removeprefix("/")]
+            self.assertTrue(chapter["sections"])
+            for section in chapter["sections"]:
+                self.assertIn(section["anchor"], page.targets)
+                self.assertIn(section["title"], page.words())
+        layout = (CONVERTER.OUTPUT / "_layouts" / "default.html").read_text(encoding="utf-8")
+        self.assertIn("site.data.navigation", layout)
+        self.assertIn("chapter.url | relative_url", layout)
+        self.assertIn('aria-current="page"', layout)
+        self.assertIn('href="#main-content"', layout)
 
     def test_document_content_is_preserved(self):
         blocks = self.source["blocks"]

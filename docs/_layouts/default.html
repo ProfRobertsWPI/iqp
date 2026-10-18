@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="{{ page.lang | default: site.lang | default: 'en' }}">
+  <head>
+    <script>
+      (() => {
+        const param = new URLSearchParams(window.location.search).get("scoutTheme");
+        const theme =
+          param || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+        document.documentElement.setAttribute("data-theme", theme);
+      })();
+    </script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% seo %}
+    <link rel="stylesheet" href="{{ '/assets/site.css' | relative_url }}">
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <div class="site-shell">
+      <aside class="sidebar">
+        <a class="site-title" href="{{ '/' | relative_url }}">{{ site.title | escape }}</a>
+        <p class="site-description">{{ site.description | escape }}</p>
+        <details class="navigation-panel" open>
+          <summary class="menu-toggle">Chapters and sections</summary>
+          <nav aria-label="Chapters and sections">
+            <a class="home-link" href="{{ '/' | relative_url }}"{% if page.url == '/' or page.url == '/index.html' %} aria-current="page"{% endif %}>Guide contents</a>
+            {% for chapter in site.data.navigation %}
+              {% assign current_chapter = false %}
+              {% if page.url == chapter.url %}{% assign current_chapter = true %}{% endif %}
+              <details class="chapter-menu"{% if current_chapter %} open{% endif %}>
+                <summary>
+                  <a href="{{ chapter.url | relative_url }}"{% if current_chapter %} aria-current="page"{% endif %}>{{ chapter.title | escape }}</a>
+                </summary>
+                <ul>
+                  {% for section in chapter.sections %}
+                    <li><a href="{{ chapter.url | relative_url }}#{{ section.anchor | escape }}">{{ section.title | escape }}</a></li>
+                  {% endfor %}
+                </ul>
+              </details>
+            {% endfor %}
+          </nav>
+        </details>
+      </aside>
+      <main id="main-content" class="page-content" tabindex="-1">
+        {{ content }}
+      </main>
+    </div>
+    <script>
+      (() => {
+        const panel = document.querySelector(".navigation-panel");
+        const compact = window.matchMedia("(max-width: 800px)");
+        const resizeMenu = () => { panel.open = !compact.matches; };
+        resizeMenu();
+        compact.addEventListener("change", resizeMenu);
+
+        const sectionLinks = [...document.querySelectorAll(".chapter-menu li a")];
+        const highlightSection = () => {
+          for (const link of sectionLinks) {
+            const current = link.pathname === window.location.pathname &&
+              link.hash === window.location.hash && window.location.hash !== "";
+            if (current) {
+              link.setAttribute("aria-current", "location");
+              link.closest(".chapter-menu").open = true;
+            } else {
+              link.removeAttribute("aria-current");
+            }
+          }
+        };
+        highlightSection();
+        window.addEventListener("hashchange", highlightSection);
+      })();
+    </script>
+  </body>
+</html>
