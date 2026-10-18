@@ -1,0 +1,13 @@
+title: IQP Writing Guide
+description: From Proposal to Final Report
+theme: minima
+markdown: kramdown
+kramdown:
+  auto_ids: false
+baseurl: /iqp
+url: https://profrobertswpi.github.io
+header_pages:
+  - index.md
+exclude:
+  - Gemfile
+  - Gemfile.lock
