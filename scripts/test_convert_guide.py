@@ -18,11 +18,13 @@ SPEC.loader.exec_module(CONVERTER)
 class Page(HTMLParser):
     def __init__(self, markup):
         super().__init__()
+        self.markup = markup
         self.parts = []
         self.targets = []
         self.links = []
         self.images = []
         self.tables = 0
+        self.downloads = []
         self.feed(markup)
 
     def handle_data(self, data):
@@ -34,6 +36,8 @@ class Page(HTMLParser):
             self.targets.append(attrs["id"])
         if tag == "a" and "href" in attrs:
             self.links.append(attrs["href"])
+            if "download" in attrs:
+                self.downloads.append(attrs["href"])
         if tag == "img":
             self.images.append(attrs["src"])
         if tag == "table":
@@ -90,6 +94,9 @@ class GuideTests(unittest.TestCase):
                     url = urlsplit(href)
                     if url.scheme or url.netloc:
                         continue
+                    if url.path.startswith("assets/"):
+                        self.assertTrue((CONVERTER.OUTPUT / unquote(url.path)).is_file(), href)
+                        continue
                     target = self.pages[url.path or name]
                     if url.fragment:
                         self.assertIn(unquote(url.fragment), target.targets)
@@ -111,6 +118,27 @@ class GuideTests(unittest.TestCase):
         self.assertIn('aria-current="page"', layout)
         self.assertIn('href="#main-content"', layout)
 
+    def test_worksheet_downloads_follow_matching_tables(self):
+        downloads = []
+        expected_chapters = {"chapter-02.html": 5, "chapter-03.html": 2}
+        for name, page in self.pages.items():
+            self.assertEqual(len(page.downloads), expected_chapters.get(name, 0))
+            downloads.extend(unquote(url).removeprefix("assets/worksheets/") for url in page.downloads)
+            matches = re.findall(
+                r'</table>\s*<p class="worksheet-download"><a href="([^"]+)" download>',
+                page.markup,
+            )
+            self.assertEqual(matches, page.downloads)
+        expected = [
+            CONVERTER.WORKSHEETS[CONVERTER.text(block["c"][3])][0]
+            for block in self.source["blocks"]
+            if block["t"] == "Table" and CONVERTER.text(block["c"][3]) in CONVERTER.WORKSHEETS
+        ]
+        self.assertEqual(downloads, expected)
+        self.assertEqual(set(downloads), {
+            path.name for path in (CONVERTER.OUTPUT / "assets" / "worksheets").glob("*.docx")
+        })
+
     def test_document_content_is_preserved(self):
         blocks = self.source["blocks"]
         starts = [
@@ -128,6 +156,7 @@ class GuideTests(unittest.TestCase):
             content = content.removeprefix("\n[Contents](index.html)\n\n")
             content = content.rsplit("\n\n---\n\n", 1)[0]
             content = re.sub(r"\*\*On this page\*\*\n\n(?:- .+\n)+", "", content)
+            content = re.sub(r'<p class="worksheet-download">.*?</p>', "", content)
             converted = Page(render(content, "gfm-gfm_auto_identifiers"))
             with self.subTest(page=name):
                 self.assertEqual(original.words(), converted.words())

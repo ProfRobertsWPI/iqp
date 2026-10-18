@@ -198,6 +198,8 @@ Before drafting your chapter, identify the major findings that emerged from your
 |  |  |  |  |
 |  |  |  |  |
 
+<p class="worksheet-download"><a href="assets/worksheets/WORKSHEET%20%E2%80%93%20Planning%20your%20Findings%20Chapter.docx" download>Download worksheet: Planning your Findings Chapter (Word .docx)</a></p>
+
 Then consider:
 
 - Which findings are most important for answering our research questions?
@@ -347,6 +349,8 @@ Before drafting your chapter, map the connection between each major recommendati
 |  |  |  |  |
 |  |  |  |  |
 |  |  |  |  |
+
+<p class="worksheet-download"><a href="assets/worksheets/WORKSHEET%20%E2%80%93%20Planning%20your%20Recommendations.docx" download>Download worksheet: Planning your Recommendations (Word .docx)</a></p>
 
 Then consider:
 

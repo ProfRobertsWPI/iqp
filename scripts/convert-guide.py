@@ -9,6 +9,7 @@ import re
 import shutil
 import subprocess
 from zipfile import ZipFile
+from urllib.parse import quote
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -16,6 +17,36 @@ SOURCE = ROOT / "Prof Roberts_IQP Writing Guide_2026.docx"
 OUTPUT = ROOT / "docs"
 CHAPTER = re.compile(r"^Chapter (\d+) - (.+)$")
 SECTION = re.compile(r"^\d+\.\d+\s")
+WORKSHEETS = {
+    "Introduction Move and Questions to Guide Your PlanningYour Ideas": (
+        "Worksheet_Planning your introduction.docx",
+        "Planning your Introduction",
+    ),
+    "Background SectionWhat is the purpose of this section?Why does this section appear in this order?": (
+        "Worksheet_Planning your background chapter.docx",
+        "Planning your Background Chapter",
+    ),
+    "Project GoalResearch ObjectiveResearch QuestionsWhat information do we need?Who or what can provide it?": (
+        "WORKSHEET \u2013 Planning Your Goal, Objectives, and Research Questions.docx",
+        "Planning Your Goal, Objectives, and Research Questions",
+    ),
+    "Research QuestionInformation NeededSource of InformationMethodHow will we collect it?Why does this method make sense?": (
+        "WORKSHEET \u2013 Connect Research Questions to Methods.docx",
+        "Connect Research Questions to Methods",
+    ),
+    "Research QuestionEvidence from Method/Source 1Evidence from Method/Source 2Evidence from Method/Source 3": (
+        "WORKSHEET \u2013 Planning for Triangulation.docx",
+        "Planning for Triangulation",
+    ),
+    "What did we find?What evidence supports this finding?What does the evidence mean?What limitations or alternative interpretations should readers understand?": (
+        "WORKSHEET \u2013 Planning your Findings Chapter.docx",
+        "Planning your Findings Chapter",
+    ),
+    "What did we find?What do we recommend?Who is the recommendation for?What would implementation require?": (
+        "WORKSHEET \u2013 Planning your Recommendations.docx",
+        "Planning your Recommendations",
+    ),
+}
 
 
 def walk(value):
@@ -175,6 +206,7 @@ def convert():
     ]
     files["index.md"] = front_matter("IQP Writing Guide") + "\n\n".join(home) + "\n"
 
+    linked_worksheets = set()
     for index, page in enumerate(pages):
         blocks = []
         headings = []
@@ -207,6 +239,27 @@ def convert():
                 blocks.append(html_block(document, block))
             else:
                 blocks.append(block)
+            if block["t"] == "Table":
+                header = text(block["c"][3])
+                if header in WORKSHEETS:
+                    filename, label = WORKSHEETS[header]
+                    if filename in linked_worksheets:
+                        raise ValueError(f"Worksheet matched more than one table: {filename}")
+                    worksheet = OUTPUT / "assets" / "worksheets" / filename
+                    if not worksheet.is_file():
+                        raise FileNotFoundError(f"Missing worksheet: {worksheet}")
+                    linked_worksheets.add(filename)
+                    url = "assets/worksheets/" + quote(filename, safe="")
+                    blocks.append({
+                        "t": "RawBlock",
+                        "c": [
+                            "html",
+                            '<p class="worksheet-download">'
+                            f'<a href="{url}" download>'
+                            f'Download worksheet: {html.escape(label)} (Word .docx)'
+                            "</a></p>",
+                        ],
+                    })
             if block is page["blocks"][0]:
                 # Insert the section contents after conversion, below the chapter title.
                 blocks.append({"t": "RawBlock", "c": ["html", "<!-- chapter-contents -->"]})
@@ -225,6 +278,10 @@ def convert():
             + " | ".join(navigation)
             + "\n"
         )
+
+    missing = {filename for filename, _ in WORKSHEETS.values()} - linked_worksheets
+    if missing:
+        raise ValueError("No matching table found for worksheets: " + ", ".join(sorted(missing)))
 
     media = {}
     with ZipFile(SOURCE) as archive:

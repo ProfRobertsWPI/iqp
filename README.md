@@ -24,6 +24,12 @@ content. Navigation data in `docs/_data/navigation.json` is regenerated from the
 Word headings along with the chapter pages. The shared layout and responsive
 styles live in `docs/_layouts/default.html` and `docs/assets/site.css`.
 
+The seven planning tables in Chapters 2 and 3 remain in the guide, with a
+download link immediately below each one for its matching Word worksheet in
+`docs/assets/worksheets/`. The converter matches table headers to the worksheet
+mapping in `scripts/convert-guide.py` and reports missing files or unmatched
+tables instead of generating broken download links.
+
 ## Publish on GitHub Pages
 
 1. Merge these files into `main`.

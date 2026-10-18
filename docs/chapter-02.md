@@ -80,6 +80,8 @@ Use the five moves to sketch the structure of your Introduction before you begin
 | **5. Our Project:** How does our project respond to the need we identified? What are we trying to accomplish? What is our project goal? What are our major objectives? |  |
 | **Look at the Introduction as a Whole:** Can we trace a clear path from the larger issue to the need for our project? Where does the story make a jump? What do we still need to research, discuss, or figure out? |  |
 
+<p class="worksheet-download"><a href="assets/worksheets/Worksheet_Planning%20your%20introduction.docx" download>Download worksheet: Planning your Introduction (Word .docx)</a></p>
+
 <a id="background-chapter"></a>
 
 ## 2.2 Background Chapter
@@ -249,6 +251,8 @@ Then sketch a possible outline for your chapter. Focus first on the ideas and th
 | Next: |  |  |
 | Leading to our research: |  |  |
 
+<p class="worksheet-download"><a href="assets/worksheets/Worksheet_Planning%20your%20background%20chapter.docx" download>Download worksheet: Planning your Background Chapter (Word .docx)</a></p>
+
 <a id="methods-chapter"></a>
 
 ## 2.3 Methods Chapter
@@ -403,6 +407,8 @@ Before deciding which methods to use, take some time with your team to complete 
 </tbody>
 </table>
 
+<p class="worksheet-download"><a href="assets/worksheets/WORKSHEET%20%E2%80%93%20Planning%20Your%20Goal%2C%20Objectives%2C%20and%20Research%20Questions.docx" download>Download worksheet: Planning Your Goal, Objectives, and Research Questions (Word .docx)</a></p>
+
 Look across your plan before moving on to methods.
 
 - *Does each objective help you accomplish your project goal?*
@@ -480,6 +486,8 @@ Use your research questions to work through the major decisions for each method 
 |  |  |  |  |  |  |
 |  |  |  |  |  |  |
 |  |  |  |  |  |  |
+
+<p class="worksheet-download"><a href="assets/worksheets/WORKSHEET%20%E2%80%93%20Connect%20Research%20Questions%20to%20Methods.docx" download>Download worksheet: Connect Research Questions to Methods (Word .docx)</a></p>
 
 A method may help answer more than one research question, and you may use more than one method to answer the same question. What matters is that you can explain the connection between what you need to learn and how you plan to learn it.
 
@@ -562,6 +570,8 @@ For research questions where triangulation would strengthen your research, map o
 |  |  |  |  |
 |  |  |  |  |
 |  |  |  |  |
+
+<p class="worksheet-download"><a href="assets/worksheets/WORKSHEET%20%E2%80%93%20Planning%20for%20Triangulation.docx" download>Download worksheet: Planning for Triangulation (Word .docx)</a></p>
 
 The goal is not to fill every box. Instead, use the table to identify where multiple forms of evidence could strengthen your ability to answer an important research question.
 
