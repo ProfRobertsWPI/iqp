@@ -151,7 +151,7 @@ Your Findings Chapter should not contain every piece of data you collected. Read
 
 - 
 
-More extensive data can be placed in an Appendix or Supplemental Material when it is useful for readers to have access to it. Figures and tables should reinforce the point you make in the narrative, not replace the narrative. Introduce and interpret each visual rather than expecting it to speak for itself. See 5.2 Figures, Tables, and Data Visualization for additional guidance.
+More extensive data can be placed in an Appendix or Supplemental Material when it is useful for readers to have access to it. Figures and tables should reinforce the point you make in the narrative, not replace the narrative. Introduce and interpret each visual rather than expecting it to speak for itself. See [5.2 Figures, Tables, and Data Visualization](chapter-05.html#figures-tables-and-data-visualization) for additional guidance.
 
 <a id="triangulate-your-evidence"></a>
 

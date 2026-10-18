@@ -132,7 +132,7 @@ href="http://www.wpi.edu/Academics/Projects"><u>http://www.wpi.edu/Academics/Pro
 
 ## Appendix C: Example Final Report Authorship
 
-Please note: Your Proposal should use an Authorship Table as described in section 4.2.
+Please note: Your Proposal should use an [Authorship Table](chapter-04.html#authorship-table) as described in [section 4.2](chapter-04.html#completing-your-id2050-research-proposal).
 
 ![P178#y1](assets/media/image12.png)
 

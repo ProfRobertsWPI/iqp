@@ -53,15 +53,15 @@ Use the table below as a quick reference for what belongs in each.
 | **Appendices** | ✓ as applicable | ✓ as applicable |
 | **Supplemental Materials** |  | ✓ as applicable for larger or different file types that cannot reasonably be included in the report itself |
 
-The Introduction, Background, and Methods appear in both documents, but they should not simply be copied from your proposal into your final report. As discussed in Part II, these chapters should be revisited and revised as your understanding of the project develops and to reflect the research you actually completed.
+The Introduction, Background, and Methods appear in both documents, but they should not simply be copied from your proposal into your final report. As discussed in [Chapter 2](chapter-02.html#chapter-2---building-your-research-story), these chapters should be revisited and revised as your understanding of the project develops and to reflect the research you actually completed.
 
 Other components are specific to one stage of the project. Your Proposal Conclusion closes your ID2050 proposal and looks forward to the research you will conduct during IQP. Your Findings, Recommendations, and Conclusion are developed after you have collected and analyzed your data. The final report also includes additional front matter, such as the Cover Page, Executive Summary, Abstract, Acknowledgements, and Meet the Team page.
 
 Both documents may include Appendices. These contain supporting materials that are useful to preserve with the report but do not belong in the main narrative. The final report may also include Supplemental Materials for larger files or other formats that cannot reasonably be incorporated into the report itself, such as a website, video, training manual, or other project product. From here, the guide addresses the two documents separately:
 
-> **4.2 Completing Your ID2050 Research Proposal**
+> **[4.2 Completing Your ID2050 Research Proposal](#completing-your-id2050-research-proposal)**
 >
-> **4.3 Completing Your IQP Final Report**
+> **[4.3 Completing Your IQP Final Report](#completing-your-iqp-final-report)**
 
 <a id="completing-your-id2050-research-proposal"></a>
 
@@ -107,7 +107,7 @@ Your proposal should begin with a Title Page that clearly identifies the project
 
 ### Authorship Table
 
-Your proposal is a team document, but different team members will usually take primary responsibility for researching, drafting, and revising different parts of it. Include an Authorship Table that identifies who contributed to each section and subsection of the proposal. The purpose of the table is to make individual contributions visible. It does not mean that a section "belongs" only to the person who initially drafted it. As discussed earlier in this guide, everyone on the team is responsible for understanding the complete proposal and helping revise it into one coherent document.
+Your proposal is a team document, but different team members will usually take primary responsibility for researching, drafting, and revising different parts of it. Include an Authorship Table that identifies who contributed to each section and subsection of the proposal. The purpose of the table is to make individual contributions visible. It does not mean that a section "belongs" only to the person who initially drafted it. As discussed [earlier in this guide](chapter-01.html#writing-as-a-team), everyone on the team is responsible for understanding the complete proposal and helping revise it into one coherent document.
 
 A simple authorship table might look like this:
 
@@ -150,13 +150,13 @@ Include a Table of Contents that identifies the major sections and subsections o
 
 - List of Tables
 
-If you do not use figures or tables, you do not need to include an empty list. Detailed guidance for headings, page numbering, figure and table captions, and other document-formatting conventions is provided in Section 5.2 and 5.3.
+If you do not use figures or tables, you do not need to include an empty list. Detailed guidance for headings, page numbering, figure and table captions, and other document-formatting conventions is provided in [Section 5.2](chapter-05.html#figures-tables-and-data-visualization) and [5.3](chapter-05.html#formatting-and-document-mechanics).
 
 <a id="references"></a>
 
 ### References
 
-Your proposal should include a complete References section containing the sources cited throughout your Introduction, Background, Methods, and other parts of the document. The References section includes sources that are actually cited in the proposal. It should not simply be a list of everything your team read while researching the project. Detailed guidance about in-text citations, formatting references, and citing different types of sources is provided in Section 5.4.
+Your proposal should include a complete References section containing the sources cited throughout your Introduction, Background, Methods, and other parts of the document. The References section includes sources that are actually cited in the proposal. It should not simply be a list of everything your team read while researching the project. Detailed guidance about in-text citations, formatting references, and citing different types of sources is provided in [Section 5.4](chapter-05.html#citations-and-references).
 
 <a id="proposal-appendices"></a>
 
@@ -270,7 +270,7 @@ Your final report includes both a Cover Page and a Title Page, but they serve di
 
 The Cover Page is the visual introduction to your report. Use it to establish the visual identity of your project and give readers a sense of the project before they begin reading. At a minimum, include the project title, student names, and project-host name or logo. You may also include the WPI logo and an image or other visual that represents the project. The design should be consistent with the visual choices you make throughout the rest of the report.
 
-The Title Page is a formal academic requirement and must follow the required WPI format for degree completion. Unlike the Cover Page, the content and organization of the Title Page are prescribed rather than a design choice. Refer to the current WPI requirements when preparing this page. See Appendix A and B for examples of cover and title pages.
+The Title Page is a formal academic requirement and must follow the required WPI format for degree completion. Unlike the Cover Page, the content and organization of the Title Page are prescribed rather than a design choice. Refer to the current WPI requirements when preparing this page. See [Appendix A](resources.html#appendix-a-cover-page-examples) and [B](resources.html#appendix-b-required-wpi-title-page-for-final-report) for examples of cover and title pages.
 
 <a id="abstract"></a>
 
@@ -327,7 +327,7 @@ Use the Acknowledgments to recognize people and organizations who contributed to
 
 ### Meet the Team
 
-The Meet the Team page introduces your team! Unlike the Authorship Statement (below), which documents responsibility for the work, the Meet the Team page is a more visual introduction to the team. Include a photograph of each team member along with their name and brief information that will help readers understand who conducted the project. Keep the entries relatively consistent in length and format so that the page reads as a team introduction rather than a collection of individual biographies. The design of this page should be consistent with the visual identity of the rest of your report. See Appendix D for examples of Meet the Team pages.
+The Meet the Team page introduces your team! Unlike the [Authorship Statement](#authorship-statement) (below), which documents responsibility for the work, the Meet the Team page is a more visual introduction to the team. Include a photograph of each team member along with their name and brief information that will help readers understand who conducted the project. Keep the entries relatively consistent in length and format so that the page reads as a team introduction rather than a collection of individual biographies. The design of this page should be consistent with the visual identity of the rest of your report. See [Appendix D](resources.html#appendix-d-example-meet-the-team-pages) for examples of Meet the Team pages.
 
 <a id="authorship-statement"></a>
 
@@ -353,13 +353,13 @@ Follow the same conventions described for your proposal:
 
 - List of Tables, if applicable
 
-Make sure these reflect the final headings, titles, captions, and page numbers in your completed report. See Section 5.3 for information on formatting your Table of Contents, List of Figures, and List of Tables.
+Make sure these reflect the final headings, titles, captions, and page numbers in your completed report. See [Section 5.3](chapter-05.html#formatting-and-document-mechanics) for information on formatting your Table of Contents, List of Figures, and List of Tables.
 
 <a id="references-1"></a>
 
 ### References
 
-As with your proposal, include a complete References section containing the sources actually cited in your report. Update your References as you revise your Background, Methods, Findings, and other sections during IQP. See Section 5.4 for more information on References and Citations.
+As with your proposal, include a complete References section containing the sources actually cited in your report. Update your References as you revise your Background, Methods, Findings, and other sections during IQP. See [Section 5.4](chapter-05.html#citations-and-references) for more information on References and Citations.
 
 <a id="appendices-and-supplemental-materials"></a>
 
@@ -463,13 +463,13 @@ Before submitting the report, step back and read it as a complete document rathe
 
 Refer to these sections for guidance that applies across the final report:
 
-- Designing for Your Reader: Section 5.1
+- Designing for Your Reader: [Section 5.1](chapter-05.html#designing-for-your-reader)
 
-- Figures, Tables, and Data Visualization: Section 5.2
+- Figures, Tables, and Data Visualization: [Section 5.2](chapter-05.html#figures-tables-and-data-visualization)
 
-- Formatting and Document Mechanics: Section 5.3
+- Formatting and Document Mechanics: [Section 5.3](chapter-05.html#formatting-and-document-mechanics)
 
-- Citations and References: Section 5.4
+- Citations and References: [Section 5.4](chapter-05.html#citations-and-references)
 
 ---
 

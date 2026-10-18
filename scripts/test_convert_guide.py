@@ -31,6 +31,8 @@ class Page(HTMLParser):
         self.parts.append(data)
 
     def handle_starttag(self, tag, attrs):
+        if tag in {"p", "li", "th", "td", "tr", "br", "h1", "h2", "h3", "h4", "h5", "h6"}:
+            self.parts.append(" ")
         attrs = dict(attrs)
         if "id" in attrs:
             self.targets.append(attrs["id"])
@@ -43,8 +45,12 @@ class Page(HTMLParser):
         if tag == "table":
             self.tables += 1
 
+    def handle_endtag(self, tag):
+        if tag in {"p", "li", "th", "td", "tr", "h1", "h2", "h3", "h4", "h5", "h6"}:
+            self.parts.append(" ")
+
     def words(self):
-        return re.sub(r"\s+", " ", " ".join(self.parts)).strip()
+        return re.sub(r"\s+", " ", "".join(self.parts)).strip()
 
 
 def render(content, source):
@@ -159,11 +165,81 @@ class GuideTests(unittest.TestCase):
             content = re.sub(r'<p class="worksheet-download">.*?</p>', "", content)
             converted = Page(render(content, "gfm-gfm_auto_identifiers"))
             with self.subTest(page=name):
-                self.assertEqual(original.words(), converted.words())
+                expected = original.words()
+                for old, new in (
+                    ("As discussed in Part II", "As discussed in Chapter 2"),
+                    (
+                        "Data Collection Tools and Supporting Materials: Section 5.4",
+                        "Data Collection Tools and Supporting Materials: Section 2.3",
+                    ),
+                    (
+                        "Appendices and Supplemental Materials: Section 5.4",
+                        "Appendices and Supplemental Materials: Section 4.3",
+                    ),
+                ):
+                    expected = expected.replace(old, new)
+                self.assertEqual(expected, converted.words())
                 self.assertEqual(original.tables, converted.tables)
                 self.assertEqual(
                     ["assets/" + image for image in original.images], converted.images
                 )
+
+    def test_explicit_cross_references_are_linked(self):
+        chapter2 = self.files["chapter-02.md"]
+        chapter3 = self.files["chapter-03.md"]
+        chapter4 = self.files["chapter-04.md"]
+        self.assertIn(
+            "[5.2 Figures, Tables, and Data Visualization](chapter-05.html#figures-tables-and-data-visualization)",
+            chapter3,
+        )
+        for label, destination in (
+            ("Section 5.1", "chapter-05.html#designing-for-your-reader"),
+            ("Section 5.2", "chapter-05.html#figures-tables-and-data-visualization"),
+            ("Section 5.3", "chapter-05.html#formatting-and-document-mechanics"),
+            ("Section 5.4", "chapter-05.html#citations-and-references"),
+            ("Appendix A", "resources.html#appendix-a-cover-page-examples"),
+            ("B", "resources.html#appendix-b-required-wpi-title-page-for-final-report"),
+            ("Appendix D", "resources.html#appendix-d-example-meet-the-team-pages"),
+            ("Authorship Statement", "#authorship-statement"),
+            ("earlier in this guide", "chapter-01.html#writing-as-a-team"),
+        ):
+            self.assertIn(f"[{label}]({destination})", chapter4)
+        self.assertIn(
+            "[section 4.2](chapter-04.html#completing-your-id2050-research-proposal)",
+            self.files["resources.md"],
+        )
+        self.assertIn(
+            "[Data Collection Tools and Supporting Materials: Section 2.3](#data-collection-tools-and-supporting-materials)",
+            chapter2,
+        )
+        self.assertIn(
+            "[Appendices and Supplemental Materials: Section 4.3](chapter-04.html#appendices-and-supplemental-materials)",
+            chapter2,
+        )
+        self.assertIn("*See Appendix A for our interview questions.*", chapter2)
+        self.assertIn("- Appendix A: Interview Protocol", chapter4)
+        self.assertIn("- Appendix B: Survey Instrument", chapter4)
+        for name, content in self.files.items():
+            if name.endswith(".md"):
+                self.assertNotRegex(content, r"(?<!\[)[Ss]ection 5\.[1-4](?!\d|\])")
+
+    def test_cross_reference_linking_preserves_existing_links_and_formatting(self):
+        existing = {
+            "t": "Link",
+            "c": [["", [], []], [{"t": "Str", "c": "Section 5.4"}], ["https://example.com", ""]],
+        }
+        inlines = [
+            existing,
+            {"t": "Space"},
+            {"t": "Strong", "c": [
+                {"t": "Str", "c": "Section"}, {"t": "Space"}, {"t": "Str", "c": "5.4"},
+            ]},
+        ]
+        result = CONVERTER.link_inlines(inlines, {"Section 5.4": ("chapter-05.html#citations-and-references", "Section 5.4")})
+        self.assertEqual(result[0], existing)
+        self.assertEqual(result[2]["t"], "Strong")
+        self.assertEqual(result[2]["c"][0]["t"], "Link")
+        self.assertEqual(result[2]["c"][0]["c"][2][0], "chapter-05.html#citations-and-references")
 
     def test_generated_files_are_current(self):
         for name, content in self.files.items():

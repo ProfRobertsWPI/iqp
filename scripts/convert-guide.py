@@ -102,6 +102,116 @@ def meaningful(block):
     )
 
 
+def link_inlines(inlines, references):
+    """Link plain-text runs without rewriting existing links or inline formatting."""
+    pattern = re.compile(
+        r"(?<!\w)(?:" + "|".join(re.escape(label) for label in sorted(references, key=len, reverse=True)) + r")(?!\w)"
+    )
+    result = []
+    run = []
+
+    def flush():
+        value = text(run)
+        position = 0
+
+        def plain(value):
+            return [
+                {"t": "Space"} if part == " " else {"t": "Str", "c": part}
+                for part in re.split("( )", value) if part
+            ]
+
+        for match in pattern.finditer(value):
+            result.extend(plain(value[position:match.start()]))
+            url, label = references[match[0]]
+            result.append({"t": "Link", "c": [["", [], []], plain(label), [url, ""]]})
+            position = match.end()
+        result.extend(plain(value[position:]))
+        run.clear()
+
+    for inline in inlines:
+        if inline["t"] in {"Str", "Space", "SoftBreak"}:
+            run.append(inline)
+            continue
+        flush()
+        if inline["t"] in {"Strong", "Emph", "Underline", "Strikeout", "Superscript", "Subscript"}:
+            inline["c"] = link_inlines(inline["c"], references)
+        result.append(inline)
+    flush()
+    return result
+
+
+def add_cross_references(pages, targets):
+    numbered = {}
+    for page in pages:
+        for block in page["blocks"]:
+            if block["t"] == "Header":
+                title = text(block["c"][2])
+                if SECTION.match(title):
+                    numbered[title.split()[0]] = (title, block["c"][1][0])
+
+    for page in pages:
+        def url(anchor):
+            if anchor not in targets:
+                raise ValueError(f"Unknown cross-reference target: {anchor}")
+            prefix = "" if targets[anchor] == page["slug"] else targets[anchor] + ".html"
+            return prefix + "#" + anchor
+
+        references = {}
+        for number, (title, anchor) in numbered.items():
+            for label in (title, "Section " + number, "section " + number):
+                references[label] = (url(anchor), label)
+        for chapter in pages:
+            if chapter["slug"].startswith("chapter-"):
+                label = "Chapter " + str(int(chapter["slug"].split("-")[1]))
+                references[label] = (url(chapter["blocks"][0]["c"][1][0]), label)
+
+        for block in page["blocks"]:
+            for node in walk(block):
+                if node.get("t") not in {"Para", "Plain"}:
+                    continue
+                value = text(node["c"])
+                local = dict(references)
+                # These are references to the guide, not example appendices in a student's report.
+                if "See Appendix A and B for examples" in value:
+                    for label, anchor in (
+                        ("Appendix A", "appendix-a-cover-page-examples"),
+                        ("B", "appendix-b-required-wpi-title-page-for-final-report"),
+                    ):
+                        local[label] = (url(anchor), label)
+                if "See Appendix D for examples" in value:
+                    local["Appendix D"] = (url("appendix-d-example-meet-the-team-pages"), "Appendix D")
+                if "Section 5.2 and 5.3" in value:
+                    local["5.3"] = (url("formatting-and-document-mechanics"), "5.3")
+                if "As discussed in Part II" in value:
+                    local["Part II"] = (
+                        url("chapter-2---building-your-research-story"), "Chapter 2"
+                    )
+                if "As discussed earlier in this guide" in value:
+                    local["earlier in this guide"] = (url("writing-as-a-team"), "earlier in this guide")
+                if "Authorship Statement (below)" in value:
+                    local["Authorship Statement"] = (url("authorship-statement"), "Authorship Statement")
+                guidance = {
+                    "Quoting, Paraphrasing, and Summarizing: Section 5.4": (
+                        "quoting-paraphrasing-and-summarizing", None
+                    ),
+                    "Using AI in Research and Writing: Section 5.4": ("ai-generated-content-and-sources", None),
+                    "Data Collection Tools and Supporting Materials: Section 5.4": (
+                        "data-collection-tools-and-supporting-materials",
+                        "Data Collection Tools and Supporting Materials: Section 2.3",
+                    ),
+                    "Appendices and Supplemental Materials: Section 5.4": (
+                        "appendices-and-supplemental-materials",
+                        "Appendices and Supplemental Materials: Section 4.3",
+                    ),
+                }
+                if value in guidance:
+                    anchor, corrected = guidance[value]
+                    local[value] = (url(anchor), corrected or value)
+                if "Authorship Table as described in section 4.2" in value:
+                    local["Authorship Table"] = (url("authorship-table"), "Authorship Table")
+                node["c"] = link_inlines(node["c"], local)
+
+
 def convert():
     if not shutil.which("pandoc"):
         raise RuntimeError("Pandoc is required. Install it from https://pandoc.org/installing.html")
@@ -181,6 +291,8 @@ def convert():
                 node["c"][0][2] = [
                     pair for pair in node["c"][0][2] if pair[0] not in {"width", "height"}
                 ]
+
+    add_cross_references(pages, targets)
 
     files = {}
     sidebar = [

@@ -188,11 +188,11 @@ You can use descriptive section headings to help make that structure visible. Yo
 
 Several other parts of this guide address research and writing skills that you will use when developing your Background. You can refer to these sections as needed when you are writing your background chapter.
 
-- Quoting, Paraphrasing, and Summarizing: Section 5.4
+- [Quoting, Paraphrasing, and Summarizing: Section 5.4](chapter-05.html#quoting-paraphrasing-and-summarizing)
 
-- Citations and References: Section 5.4
+- Citations and References: [Section 5.4](chapter-05.html#citations-and-references)
 
-- Using AI in Research and Writing: Section 5.4
+- [Using AI in Research and Writing: Section 5.4](chapter-05.html#ai-generated-content-and-sources)
 
 <a id="writing-your-proposal-background"></a>
 
@@ -913,11 +913,11 @@ If those connections are difficult for your reader to follow, reconsider the org
 
 Several other parts of this guide address skills and requirements that you will use when developing and documenting your methodology. Refer to these sections as needed:
 
-- Citations and References: Section 5.4
+- Citations and References: [Section 5.4](chapter-05.html#citations-and-references)
 
-- Data Collection Tools and Supporting Materials: Section 5.4
+- [Data Collection Tools and Supporting Materials: Section 2.3](#data-collection-tools-and-supporting-materials)
 
-- Appendices and Supplemental Materials: Section 5.4
+- [Appendices and Supplemental Materials: Section 4.3](chapter-04.html#appendices-and-supplemental-materials)
 
 - WPI Institutional Review Board: [WPI IRB website](https://www.wpi.edu/offices/vice-provost-research/compliance/institutional-review-board)
 
