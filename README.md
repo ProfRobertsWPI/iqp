@@ -237,8 +237,9 @@ viewer's normal file controls.
 
 The author selected the [Figma cover design](https://www.figma.com/design/gBEn5y4tMGH2LACd53AM1T)
 (frame `1:2`, **IQP Writing Guide Cover**) as the visual direction. The complete
-cover is exported to `docs/assets/cover/iqp-writing-guide.png`, displayed on
-the landing page, and linked for full-size viewing. It is stored locally so
+cover is exported to `docs/assets/cover/iqp-writing-guide.png` and displayed
+on the right of the landing page alongside the welcome text, without a
+full-size link. On small screens it stacks above the welcome text. It is stored locally so
 readers do not need Figma access and the site does not depend on expiring export
 URLs. The cover's title, subtitle, and author credit are retained as artwork;
 page titles and navigation remain accessible text outside the image.

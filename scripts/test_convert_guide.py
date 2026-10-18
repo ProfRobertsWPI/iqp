@@ -100,6 +100,8 @@ class GuideTests(unittest.TestCase):
         self.assertLess(home.index("## Welcome"), home.index("## How to use this guide"))
         self.assertLess(home.index("## Contents"), home.index("Author"))
         self.assertIn("](assets/cover/iqp-writing-guide.png)", home)
+        self.assertNotIn("full-size", home)
+        self.assertNotIn("[![", home)
         self.assertTrue((CONVERTER.OUTPUT / "assets" / "cover" / "iqp-writing-guide.png").is_file())
         contents_start = next(
             i for i, block in enumerate(self.source["blocks"])

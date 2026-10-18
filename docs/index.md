@@ -7,9 +7,7 @@ title: "IQP Writing Guide"
 
 *From Proposal to Final Report*
 
-[![IQP Writing Guide cover: a winding path connects research, collaboration, and writing on a cream, navy, and teal background.](assets/cover/iqp-writing-guide.png)](assets/cover/iqp-writing-guide.png)
-
-[View the cover full-size](assets/cover/iqp-writing-guide.png)
+![IQP Writing Guide cover: a winding path connects research, collaboration, and writing on a cream, navy, and teal background.](assets/cover/iqp-writing-guide.png)
 
 ## Welcome
 

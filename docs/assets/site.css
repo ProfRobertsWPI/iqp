@@ -206,7 +206,10 @@ h4 { font-size: 1.125rem; }
 p, ul, ol { margin-top: 0; margin-bottom: 1rem; }
 .page-content li > p { margin-bottom: 0.5rem; }
 .page-content img { max-width: 100%; height: auto; }
-.page-content img[src*="assets/cover/"] { display: block; width: min(100%, 23rem); margin: 1.5rem auto 0.75rem; border-radius: 0.625rem; border: 1px solid var(--cp-border); }
+.page-content p:has(> img[src*="assets/cover/"]) { float: right; width: 42%; max-width: 18rem; margin: 0 0 1.5rem 2rem; }
+.page-content img[src*="assets/cover/"] { display: block; width: 100%; border-radius: 0.625rem; border: 1px solid var(--cp-border); }
+.page-content p:has(> img[src*="assets/cover/"]) + h2 { margin-top: 0; }
+.page-content:has(img[src*="assets/cover/"]) h2#contents { clear: both; }
 .page-content table { display: block; max-width: 100%; overflow-x: auto; border-collapse: collapse; margin: 1.5rem 0; }
 th, td { padding: 0.75rem; border: 1px solid var(--cp-border); text-align: left; }
 th { background: var(--cp-surface-soft); }
@@ -219,6 +222,7 @@ pre { padding: 1rem; overflow-x: auto; }
 #main-content { scroll-margin-top: calc(var(--site-header-height) + 1.5rem); }
 
 @media (max-width: 800px) {
+  .page-content p:has(> img[src*="assets/cover/"]) { float: none; width: min(100%, 18rem); margin: 1.5rem auto; }
   :root { --site-header-height: 10rem; }
   .site-header { flex-wrap: wrap; padding: 1rem; gap: 1rem; }
   .header-controls { width: 100%; gap: 0.75rem; }
