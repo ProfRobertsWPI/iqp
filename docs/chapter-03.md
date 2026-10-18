@@ -3,31 +3,23 @@ layout: default
 title: "Chapter 3 - Making Sense of and Communicating What You Learned"
 ---
 
-[Contents](index.html)
-
-<a id="chapter-3---making-sense-of-and-communicating-what-you-learned"></a>
+[Contents](index.md)
 
 # Chapter 3 - Making Sense of and Communicating What You Learned
 
 **On this page**
 
-- [3.1 Findings](#findings)
-- [3.2 Recommendations](#recommendations)
-- [3.3 Conclusion](#conclusion)
+- [3.1 Findings](#31-findings)
+- [3.2 Recommendations](#32-recommendations)
+- [3.3 Conclusion](#33-conclusion)
 
 Your Introduction, Background, and Methods provide the foundation for your research. During IQP, you collect and analyze your data and use that evidence to answer your research questions. Your final report adds three chapters that communicate what you learned from that research, what you recommend based on what you learned, and what readers should ultimately take away from the project.
 
-<a id="findings"></a>
-
 ## 3.1 Findings
-
-<a id="what-is-the-purpose-of-the-findings-chapter"></a>
 
 ### What is the purpose of the Findings Chapter?
 
 The Findings Chapter presents the key discoveries you made through your research. This is where you answer the important questions that your Introduction, Background, and Methods have prepared the reader to understand. Your goal is not simply to tell readers what data you collected. You will analyze the evidence, identify important patterns and themes, and explain what your research helped you learn.
-
-<a id="data-are-not-findings"></a>
 
 #### Data Are Not Findings
 
@@ -40,8 +32,6 @@ is a piece of data.
 A finding goes further by explaining what the evidence means: *Expanding the Princeton wind farm to two 750 kW turbines will pay for itself in eight years.*
 
 The same distinction applies to qualitative research. A quotation from an interview participant is evidence and not a finding by itself. Your findings are the larger idea, pattern, relationship, or theme that you have drawn from the data and evidence.
-
-<a id="moving-from-analysis-to-findings"></a>
 
 #### Moving from Analysis to Findings
 
@@ -67,8 +57,6 @@ Your Methods Chapter explains how you analyzed your data. Your Findings Chapter 
 
 Your findings should be based on the research you conducted, not simply on what your team believes or expected to find. Do not leave out a finding simply because it was unexpected or does not fit what your team anticipated. Unexpected or contradictory evidence may be important to understanding the project.
 
-<a id="findings-are-not-always-problems"></a>
-
 #### Findings Are Not Always Problems
 
 As you analyze your data, be careful not to assume that every finding needs to identify something that is wrong or needs to change. Positive findings are findings too. Your research may show that:
@@ -91,8 +79,6 @@ These findings can be just as important as identifying barriers, gaps, or proble
 
 rather than: *What problems can we find?*
 
-<a id="organizing-your-findings"></a>
-
 ### Organizing Your Findings
 
 Begin the chapter with a short introductory paragraph that gives readers an overview of the major findings and helps them understand how the chapter is organized. Avoid organizing the chapter as an information dump sorted by each research method:
@@ -106,8 +92,6 @@ Begin the chapter with a short introductory paragraph that gives readers an over
 Organizing by research method tells readers where your data came from, rather than what you learned from it. Instead, organize the chapter around your important findings, research questions, objectives, themes, or another structure that helps readers understand what your research revealed.
 
 For many projects, following the sequence of objectives or research questions established in the Methods Chapter will work well. Other projects may need a different structure. For example, you might organize findings around stakeholder groups when their different perspectives are important, or around themes and compare stakeholder perspectives within each theme.
-
-<a id="state-the-finding-then-support-it"></a>
 
 #### State the Finding, Then Support It
 
@@ -129,8 +113,6 @@ This approach helps readers understand the point of the evidence before they enc
 
 6.  Connect the finding to existing research when useful.
 
-<a id="use-evidence-selectively"></a>
-
 #### Use Evidence Selectively
 
 Your Findings Chapter should not contain every piece of data you collected. Readers need enough evidence to understand and trust your claims, but they do not need to see every interview response, survey answer, observation note, or calculation. Depending on the project, useful evidence might include:
@@ -151,21 +133,15 @@ Your Findings Chapter should not contain every piece of data you collected. Read
 
 - 
 
-More extensive data can be placed in an Appendix or Supplemental Material when it is useful for readers to have access to it. Figures and tables should reinforce the point you make in the narrative, not replace the narrative. Introduce and interpret each visual rather than expecting it to speak for itself. See [5.2 Figures, Tables, and Data Visualization](chapter-05.html#figures-tables-and-data-visualization) for additional guidance.
-
-<a id="triangulate-your-evidence"></a>
+More extensive data can be placed in an Appendix or Supplemental Material when it is useful for readers to have access to it. Figures and tables should reinforce the point you make in the narrative, not replace the narrative. Introduce and interpret each visual rather than expecting it to speak for itself. See [5.2 Figures, Tables, and Data Visualization](chapter-05.md#52-figures-tables-and-data-visualization) for additional guidance.
 
 #### Triangulate Your Evidence
 
 Look across your methods and sources of evidence rather than treating each separately. When interviews, surveys, observations, documents, or other evidence point toward the same finding, that triangulation can strengthen your claim. If they point in different directions, do not hide the disagreement. Differences may reveal variation among stakeholder groups, limitations in one method, or a more complicated situation than your team initially expected. Your goal is not to make all of your evidence agree. Your goal is to understand what the evidence collectively allows you to say.
 
-<a id="acknowledge-limitations-and-alternative-interpretations"></a>
-
 #### Acknowledge Limitations and Alternative Interpretations
 
 Be clear about the boundaries of your findings. Distinguish between what your evidence supports and what it does not allow you to claim. Limitations may arise from your sample, research tools, data collection, analysis, or other aspects of the project. Discuss them where they help readers interpret a particular finding. Consider whether there are alternative explanations or interpretations of the evidence. If several explanations are plausible, acknowledge that rather than presenting your team's preferred interpretation as the only possibility. Acknowledging limitations and uncertainty does not make your research weaker. It helps readers understand how strongly your findings are supported and makes your claims more credible.
-
-<a id="background-methods-or-findings"></a>
 
 ### Background, Methods, or Findings?
 
@@ -184,8 +160,6 @@ Instead, move directly to what those interviews helped you learn: *Transportatio
 
 You may briefly identify the source of evidence when readers need that information to interpret a finding, but you do not need to retell the research process each time you present evidence. Likewise, information collected during IQP may occasionally provide important context rather than answer a research question. If readers need that information to understand the project, it may belong in your Background. Avoid repeating the same information in multiple chapters.
 
-<a id="planning-your-findings-chapter"></a>
-
 ### Planning Your Findings Chapter
 
 Before drafting your chapter, identify the major findings that emerged from your analysis.
@@ -198,7 +172,7 @@ Before drafting your chapter, identify the major findings that emerged from your
 |  |  |  |  |
 |  |  |  |  |
 
-<p class="worksheet-download"><a href="assets/worksheets/WORKSHEET%20%E2%80%93%20Planning%20your%20Findings%20Chapter.docx" download>Download worksheet: Planning your Findings Chapter (Word .docx)</a></p>
+[Download worksheet: Planning your Findings Chapter (Word .docx)](assets/worksheets/WORKSHEET%20%E2%80%93%20Planning%20your%20Findings%20Chapter.docx)
 
 Then consider:
 
@@ -212,11 +186,7 @@ Then consider:
 
 - What data are useful as evidence, and what can be left out or moved to supporting materials?
 
-<a id="recommendations"></a>
-
 ## 3.2 Recommendations
-
-<a id="what-is-the-purpose-of-the-recommendations-chapter"></a>
 
 ### What is the purpose of the Recommendations Chapter?
 
@@ -238,19 +208,11 @@ Recommendations should grow naturally from your Findings rather than introducing
 
 Recommendations may be a major focus of some projects and relatively brief in others. What matters is that they are appropriate to your project goal and supported by your evidence.
 
-<a id="state-recommendations-directly"></a>
-
 #### State Recommendations Directly
 
-<p>Readers may skim a Recommendations Chapter specifically looking for
-the actions you propose. Make your recommendations easy to identify.
-<u>Use direct language<em>:</em></u> <em>We recommend that [project host
-or other audience]...</em>rather than: <em>We feel that...</em> or:
-<em>It seems like...</em></p>
+Readers may skim a Recommendations Chapter specifically looking for the actions you propose. Make your recommendations easy to identify. Use direct language: We recommend that \[project host or other audience\]...rather than: *We feel that...* or: *It seems like...*
 
 Your recommendation is not based simply on how your team feels. It should be based on the evidence you collected and analyzed. Be equally careful with should. If you say someone *should* do something, your research needs to provide a reason for that recommendation.
-
-<a id="make-the-audience-clear"></a>
 
 #### Make the Audience Clear
 
@@ -259,8 +221,6 @@ Recommendations are made to someone. Identify who is in a position to act on eac
 *We recommend that \[specific organization or audience\]...* is more useful than: *More outreach should be conducted.*
 
 Making the audience explicit also helps you consider whether the recommendation is realistic for the people or organization you are asking to act.
-
-<a id="connect-recommendations-to-evidence"></a>
 
 #### Connect Recommendations to Evidence
 
@@ -288,8 +248,6 @@ The interpretation is the reasoning that explains why your finding leads to the 
 
 You do not need to repeat all of the evidence presented in your Findings Chapter, but provide enough context for readers to understand why you are making the recommendation. Use an appropriate level of confidence. If your evidence is limited or mixed, qualify the recommendation rather than making a stronger claim than your research supports.
 
-<a id="provide-a-path-toward-implementation"></a>
-
 #### Provide a Path Toward Implementation
 
 An important recommendation may need to go beyond what someone should do and provide some guidance about how it could be done. Depending on the recommendation, consider:
@@ -310,8 +268,6 @@ An important recommendation may need to go beyond what someone should do and pro
 
 You do not necessarily need to create a detailed implementation plan for every recommendation. Provide enough guidance to make important recommendations useful and actionable rather than leaving readers with a broad suggestion and no clear way forward.
 
-<a id="prioritize-when-appropriate"></a>
-
 #### Prioritize When Appropriate
 
 Not every recommendation will be equally important, urgent, feasible, or well supported. If you make several recommendations, consider whether your reader would benefit from knowing which should be addressed first or which are most important. Depending on the project, you might prioritize recommendations based on:
@@ -330,13 +286,9 @@ Not every recommendation will be equally important, urgent, feasible, or well su
 
 You do not need to formally rank recommendations in every report. Prioritize them when doing so will help your reader decide what to do next.
 
-<a id="recommendations-for-future-research"></a>
-
 #### Recommendations for Future Research
 
 Some recommendations may identify questions your team could not answer within the time or scope of your IQP. Be clear when you are recommending additional research rather than an action intended to address the problem itself. Future research recommendations should still emerge from your project. *What important question remains unanswered? What limitation could another study address? What did your research uncover that deserves additional investigation?*
-
-<a id="planning-your-recommendations"></a>
 
 ### Planning Your Recommendations
 
@@ -350,7 +302,7 @@ Before drafting your chapter, map the connection between each major recommendati
 |  |  |  |  |
 |  |  |  |  |
 
-<p class="worksheet-download"><a href="assets/worksheets/WORKSHEET%20%E2%80%93%20Planning%20your%20Recommendations.docx" download>Download worksheet: Planning your Recommendations (Word .docx)</a></p>
+[Download worksheet: Planning your Recommendations (Word .docx)](assets/worksheets/WORKSHEET%20%E2%80%93%20Planning%20your%20Recommendations.docx)
 
 Then consider:
 
@@ -366,17 +318,11 @@ Then consider:
 
 - Are any of our recommendations simply ideas we like but cannot support with our evidence?
 
-<a id="conclusion"></a>
-
 ## 3.3 Conclusion
-
-<a id="what-is-the-purpose-of-the-conclusion"></a>
 
 ### What is the purpose of the Conclusion?
 
 The Conclusion brings the completed project to a close. Your reader has already read your Findings and Recommendations, so you do not need to summarize the entire report again. Instead, step back from the details and consider what the project accomplished, why the work matters, and what might come next.
-
-<a id="move-from-the-project-to-its-larger-significance"></a>
 
 #### Move from the Project to Its Larger Significance
 
@@ -396,8 +342,6 @@ At the beginning of your Conclusion, you may briefly return to what your project
 
 - What opportunities does our work create for future action or research?
 
-<a id="keep-the-conclusion-meaningful"></a>
-
 #### Keep the Conclusion Meaningful
 
 Avoid ending with a generic statement that the project was valuable, that your team learned a lot, or that more research is needed. Your final paragraphs are your last opportunity to help readers understand **why the work matters**. Choose those ideas carefully and connect them to what the project actually accomplished. The Conclusion can be relatively brief. Its purpose is not to introduce new evidence or recommendations, but to leave readers with a clear sense of the significance and future direction of the work.
@@ -406,4 +350,6 @@ Avoid ending with a generic statement that the project was valuable, that your t
 
 ---
 
-[Contents](index.html) | [Previous: Chapter 2 - Building Your Research Story](chapter-02.html) | [Next: Chapter 4 - Completing the Proposal and Final Report](chapter-04.html)
+- [Contents](index.md)
+- [Previous: Chapter 2 - Building Your Research Story](chapter-02.md)
+- [Next: Chapter 4 - Completing the Proposal and Final Report](chapter-04.md)

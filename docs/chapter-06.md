@@ -3,20 +3,16 @@ layout: default
 title: "Chapter 6 - Sharing and Extending Your Project"
 ---
 
-[Contents](index.html)
-
-<a id="chapter-6---sharing-and-extending-your-project"></a>
+[Contents](index.md)
 
 # Chapter 6 - Sharing and Extending Your Project
 
 **On this page**
 
-- [6.1 Submitting Your Final Report to e-Projects](#submitting-your-final-report-to-e-projects)
-- [6.2 Printing Your Final Report](#printing-your-final-report)
-- [6.3 Project Recognition Opportunities](#project-recognition-opportunities)
-- [6.4 Publication Opportunities](#publication-opportunities)
-
-<a id="submitting-your-final-report-to-e-projects"></a>
+- [6.1 Submitting Your Final Report to e-Projects](#61-submitting-your-final-report-to-e-projects)
+- [6.2 Printing Your Final Report](#62-printing-your-final-report)
+- [6.3 Project Recognition Opportunities](#63-project-recognition-opportunities)
+- [6.4 Publication Opportunities](#64-publication-opportunities)
 
 ## 6.1 Submitting Your Final Report to e-Projects
 
@@ -24,19 +20,13 @@ WPI requires electronic submission of project reports. One member of your team w
 
 For current submission requirements and instructions, refer to: <https://libguides.wpi.edu/submitprojects/students>
 
-<a id="printing-your-final-report"></a>
-
 ## 6.2 Printing Your Final Report
 
 There are many options for having your final report printed. If you plan to have your report printed with a magazine-style binding, you should check the printer's specifications before completing your design to ensure that the report is formatted appropriately for printing.
 
 Previous teams have used **Mixam** and found it user-friendly and economical: <https://mixam.com/magazines>
 
-<a id="project-recognition-opportunities"></a>
-
 ## 6.3 Project Recognition Opportunities
-
-<a id="wpi-presidents-iqp-awards-recognition"></a>
 
 ### WPI President's IQP Awards Recognition
 
@@ -46,8 +36,6 @@ Teams are asked to submit their Executive Summary of five pages or fewer, and a 
 
 For more information: <https://www.wpi.edu/about/awards/presidents-iqp-awards>
 
-<a id="the-forum-on-education-abroad-award-for-academic-achievement-abroad"></a>
-
 ### The Forum on Education Abroad: Award for Academic Achievement Abroad
 
 The Forum on Education Abroad's Award for Academic Achievement Abroad recognizes thoughtful academic projects that students complete as part of their education-abroad programs. The award highlights academic excellence achieved through education abroad across the fine arts and humanities, social sciences, and STEM disciplines.
@@ -56,8 +44,6 @@ Applications are usually due in September.
 
 For more information: <https://www.forumea.org/award-for-academic-achievement-abroad.html>
 
-<a id="harvard-scholarship-social-justice-undergraduate-research-conference"></a>
-
 ### Harvard Scholarship & Social Justice Undergraduate Research Conference
 
 The Harvard Scholarship & Social Justice Undergraduate Research Conference brings together undergraduate students, faculty, and staff to celebrate engaged scholarship and reflective learning.
@@ -65,8 +51,6 @@ The Harvard Scholarship & Social Justice Undergraduate Research Conference bring
 The conference is generally held in mid-April, with applications typically due in early February. Undergraduate students can present their research through panel presentations, research roundtables, or poster presentations.
 
 For more information: <https://publicservice.fas.harvard.edu/ssj>
-
-<a id="wpi-annual-sustainability-project-competition"></a>
 
 ### WPI Annual Sustainability Project Competition
 
@@ -78,13 +62,9 @@ For more information:
 
 <https://wp.wpi.edu/sustainability-competition13/>
 
-<a id="publication-opportunities"></a>
-
 ## 6.4 Publication Opportunities
 
 There are many opportunities to publish aspects of your IQP experience. The opportunity below is one example of a journal that publishes undergraduate research.
-
-<a id="undergraduate-journal-of-service-learning-community-based-research"></a>
 
 ### Undergraduate Journal of Service Learning & Community-Based Research
 
@@ -94,4 +74,6 @@ For current submission categories and requirements, visit: <https://ujslcbr.org/
 
 ---
 
-[Contents](index.html) | [Previous: Chapter 5 - Documenting Your Project and Designing Your Report](chapter-05.html) | [Next: Resources](resources.html)
+- [Contents](index.md)
+- [Previous: Chapter 5 - Documenting Your Project and Designing Your Report](chapter-05.md)
+- [Next: Resources](resources.md)

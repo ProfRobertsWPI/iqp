@@ -2,7 +2,6 @@
 
 import argparse
 import copy
-import html
 import json
 from pathlib import Path
 import re
@@ -77,19 +76,115 @@ def pandoc(document):
     ).stdout.strip()
 
 
-def html_block(document, block):
-    markup = subprocess.run(
-        ["pandoc", "--from=json", "--to=html"],
-        input=json.dumps({**document, "blocks": [block]}),
-        capture_output=True,
-        encoding="utf-8",
-        check=True,
-    ).stdout.strip()
-    return {"t": "RawBlock", "c": ["html", markup]}
+def normalize_markdown(value):
+    """Remove Word-only inline presentation and make table cells single-line."""
+    if isinstance(value, list):
+        result = []
+        for child in value:
+            child = normalize_markdown(child)
+            if isinstance(child, dict) and child.get("t") == "Underline":
+                result.extend(child["c"])
+            elif isinstance(child, dict) and child.get("t") in {"Strong", "Emph"}:
+                inlines = child["c"]
+                leading = []
+                trailing = []
+                while inlines and inlines[0]["t"] in {"Space", "SoftBreak"}:
+                    leading.append(inlines.pop(0))
+                while inlines and inlines[-1]["t"] in {"Space", "SoftBreak"}:
+                    trailing.insert(0, inlines.pop())
+                result.extend(leading)
+                if any(character.isalnum() for character in text(inlines)):
+                    result.append(child)
+                else:
+                    result.extend(inlines)
+                result.extend(trailing)
+            else:
+                result.append(child)
+        portable = []
+        for index, child in enumerate(result):
+            following = result[index + 1] if index + 1 < len(result) else None
+            if (
+                isinstance(child, dict) and child.get("t") in {"Strong", "Emph"}
+                and isinstance(following, dict) and following.get("t") == "Str"
+                and following["c"][:1].isalnum()
+            ):
+                portable.extend(child["c"])
+            else:
+                portable.append(child)
+        return portable
+    if isinstance(value, dict):
+        return {key: normalize_markdown(child) for key, child in value.items()}
+    return value
+
+
+def simplify_table(table):
+    columns = len(table["c"][2])
+    pending = {}
+    sections = [table["c"][3][1]]
+    sections.extend(rows for body in table["c"][4] for rows in (body[2], body[3]))
+    sections.append(table["c"][5][1])
+    for rows in sections:
+        for row in rows:
+            expanded = []
+            cells = iter(row[1])
+            for column in range(columns):
+                if pending.get(column, 0):
+                    pending[column] -= 1
+                    cell = [["", [], []], {"t": "AlignDefault"}, 1, 1, []]
+                else:
+                    cell = next(cells)
+                    if cell[3] != 1:
+                        raise ValueError("Column-spanning tables need an explicit Markdown conversion.")
+                    pending[column] = cell[2] - 1
+                    cell[2] = 1
+                flattened = []
+                for block in cell[4]:
+                    if block["t"] not in {"Para", "Plain"}:
+                        raise ValueError(f"Unsupported table cell block: {block['t']}")
+                    if flattened:
+                        flattened.append({"t": "Space"})
+                    flattened.extend(block["c"])
+                for inline in walk(flattened):
+                    if inline.get("t") in {"LineBreak", "SoftBreak"}:
+                        inline.clear()
+                        inline["t"] = "Space"
+                cell[4] = [{"t": "Plain", "c": flattened}]
+                expanded.append(cell)
+            if next(cells, None) is not None:
+                raise ValueError("Unexpected extra cells in table row.")
+            row[1] = expanded
+    for specification in table["c"][2]:
+        specification[1] = {"t": "ColWidthDefault"}
+
+
+def markdown_anchors(document, pages):
+    """Ask the GFM parser for the same automatic heading IDs used by GitHub."""
+    anchors = {}
+    for page in pages:
+        headers = [
+            block for block in page["blocks"]
+            if block["t"] == "Header" and text(block["c"][2]).strip()
+        ]
+        parsed = json.loads(subprocess.run(
+            ["pandoc", "--from=gfm", "--to=json"],
+            input=pandoc({**document, "blocks": headers}),
+            capture_output=True,
+            encoding="utf-8",
+            check=True,
+        ).stdout)
+        generated = [block for block in parsed["blocks"] if block["t"] == "Header"]
+        if len(headers) != len(generated):
+            raise ValueError("Markdown conversion changed the heading structure.")
+        for original, converted in zip(headers, generated):
+            old = original["c"][1][0]
+            new = converted["c"][1][0]
+            anchors[old] = new
+            original["c"][1][0] = new
+    return anchors
 
 
 def link(page, label=None):
-    return f'[{label or page["title"]}]({page["slug"]}.html)'
+    return f'[{label or page["title"]}]({page["slug"]}.md)'
 
 
 def front_matter(title):
@@ -153,7 +248,7 @@ def add_cross_references(pages, targets):
         def url(anchor):
             if anchor not in targets:
                 raise ValueError(f"Unknown cross-reference target: {anchor}")
-            prefix = "" if targets[anchor] == page["slug"] else targets[anchor] + ".html"
+            prefix = "" if targets[anchor] == page["slug"] else targets[anchor] + ".md"
             return prefix + "#" + anchor
 
         references = {}
@@ -283,7 +378,7 @@ def convert():
                 anchor = node["c"][2][0][1:]
                 if anchor not in targets:
                     raise ValueError(f"Unresolved internal link: #{anchor}")
-                prefix = "" if targets[anchor] == page["slug"] else targets[anchor] + ".html"
+                prefix = "" if targets[anchor] == page["slug"] else targets[anchor] + ".md"
                 node["c"][2][0] = prefix + "#" + anchor
             elif node.get("t") == "Image":
                 node["c"][2][0] = "assets/" + node["c"][2][0]
@@ -293,6 +388,22 @@ def convert():
                 ]
 
     add_cross_references(pages, targets)
+
+    for page in pages:
+        page["blocks"] = normalize_markdown(page["blocks"])
+        for block in page["blocks"]:
+            if block["t"] == "Header":
+                images = [inline for inline in block["c"][2] if inline["t"] == "Image"]
+                block["heading_images"] = images
+                block["c"][2] = [inline for inline in block["c"][2] if inline["t"] != "Image"]
+    anchors = markdown_anchors(document, pages)
+    for page in pages:
+        for node in walk(page["blocks"]):
+            if node.get("t") == "Link":
+                destination = node["c"][2][0]
+                if "#" in destination and not re.match(r"^[a-zA-Z][a-zA-Z0-9+.-]*:", destination):
+                    path, anchor = destination.split("#", 1)
+                    node["c"][2][0] = path + "#" + anchors[anchor]
 
     files = {}
     sidebar = [
@@ -307,7 +418,7 @@ def convert():
         }
         for page in pages
     ]
-    preface = [block for block in document["blocks"][:contents_start] if meaningful(block)]
+    preface = normalize_markdown([block for block in document["blocks"][:contents_start] if meaningful(block)])
     home = [
         "# IQP Writing Guide",
         "*From Proposal to Final Report*",
@@ -328,31 +439,18 @@ def convert():
             if block["t"] == "Header":
                 level, attributes, inlines = block["c"]
                 anchor = attributes[0]
-                blocks.append(
-                    {"t": "RawBlock", "c": ["html", f'<a id="{html.escape(anchor, quote=True)}"></a>']}
-                )
-                images = [inline for inline in inlines if inline["t"] == "Image"]
+                images = block.pop("heading_images", [])
                 if images:
                     blocks.append({"t": "Para", "c": images})
-                    inlines[:] = [inline for inline in inlines if inline["t"] != "Image"]
                     if not text(inlines).strip():
                         continue
                 if level == 2:
                     headings.append(f'- [{text(inlines)}](#{anchor})')
-            # GFM cannot reliably round-trip underline or punctuation-only emphasis.
-            if any(
-                node.get("t") == "Underline"
-                or (
-                    node.get("t") in {"Strong", "Emph"}
-                    and not any(character.isalnum() for character in text(node))
-                )
-                for node in walk(block)
-            ):
-                blocks.append(html_block(document, block))
-            else:
-                blocks.append(block)
+            header = text(block["c"][3]) if block["t"] == "Table" else None
             if block["t"] == "Table":
-                header = text(block["c"][3])
+                simplify_table(block)
+            blocks.append(block)
+            if block["t"] == "Table":
                 if header in WORKSHEETS:
                     filename, label = WORKSHEETS[header]
                     if filename in linked_worksheets:
@@ -362,32 +460,26 @@ def convert():
                         raise FileNotFoundError(f"Missing worksheet: {worksheet}")
                     linked_worksheets.add(filename)
                     url = "assets/worksheets/" + quote(filename, safe="")
-                    blocks.append({
-                        "t": "RawBlock",
-                        "c": [
-                            "html",
-                            '<p class="worksheet-download">'
-                            f'<a href="{url}" download>'
-                            f'Download worksheet: {html.escape(label)} (Word .docx)'
-                            "</a></p>",
-                        ],
-                    })
+                    blocks.append({"t": "Para", "c": [{
+                        "t": "Link",
+                        "c": [["", [], []], [{"t": "Str", "c": f"Download worksheet: {label} (Word .docx)"}], [url, ""]],
+                    }]})
             if block is page["blocks"][0]:
                 # Insert the section contents after conversion, below the chapter title.
-                blocks.append({"t": "RawBlock", "c": ["html", "<!-- chapter-contents -->"]})
+                blocks.append({"t": "Para", "c": [{"t": "Str", "c": "CHAPTER_CONTENTS_PLACEHOLDER"}]})
         contents = "**On this page**\n\n" + "\n".join(headings) if headings else ""
-        body = pandoc({**document, "blocks": blocks}).replace("<!-- chapter-contents -->", contents)
-        navigation = ['[Contents](index.html)']
+        body = pandoc({**document, "blocks": blocks}).replace("CHAPTER_CONTENTS_PLACEHOLDER", contents)
+        navigation = ['[Contents](index.md)']
         if index:
             navigation.append(link(pages[index - 1], "Previous: " + pages[index - 1]["title"]))
         if index + 1 < len(pages):
             navigation.append(link(pages[index + 1], "Next: " + pages[index + 1]["title"]))
         files[page["slug"] + ".md"] = (
             front_matter(page["title"])
-            + "[Contents](index.html)\n\n"
+            + "[Contents](index.md)\n\n"
             + body
             + "\n\n---\n\n"
-            + " | ".join(navigation)
+            + "\n".join("- " + item for item in navigation)
             + "\n"
         )
 

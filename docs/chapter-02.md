@@ -3,25 +3,19 @@ layout: default
 title: "Chapter 2 - Building Your Research Story"
 ---
 
-[Contents](index.html)
-
-<a id="chapter-2---building-your-research-story"></a>
+[Contents](index.md)
 
 # Chapter 2 - Building Your Research Story
 
 **On this page**
 
-- [2.1 Introduction](#introduction)
-- [2.2 Background Chapter](#background-chapter)
-- [2.3 Methods Chapter](#methods-chapter)
+- [2.1 Introduction](#21-introduction)
+- [2.2 Background Chapter](#22-background-chapter)
+- [2.3 Methods Chapter](#23-methods-chapter)
 
 Your ID 2050 research proposal has three main chapters: **Introduction, Background, and Methods**. Together, these chapters tell the story of your project and your plan for how you will conduct your research. During your IQP, you will revise these chapters as your project develops to add additional background context, document your actual research process, and ensure your final report accurately represents the project you completed.
 
-<a id="introduction"></a>
-
 ## 2.1 Introduction
-
-<a id="what-is-the-purpose-of-the-introduction"></a>
 
 ### What is the purpose of the introduction?
 
@@ -51,21 +45,15 @@ Finally, explain how your project responds to that need. Introduce your project 
 
 Together, the five moves should create a logical progression. You will end the Introduction with a brief roadmap that helps readers understand where the report will go next.
 
-<a id="writing-your-proposal-introduction"></a>
-
 ### Writing Your Proposal Introduction
 
 Your proposal Introduction represents your team's best understanding of the project during ID2050. You may understand some parts of the project before others, so expect to return to the Introduction as you conduct more background research, talk with your project host, and refine your project goal and objectives. By the end of the Introduction, your reader should understand why the project is needed and what your team plans to accomplish.
-
-<a id="writing-your-final-report-introduction"></a>
 
 ### Writing Your Final Report Introduction
 
 When you return to the Introduction during IQP, do not simply change the verbs from future to past tense. Return to the five moves and ask whether they still tell the right story. Your understanding of the context, problem, stakeholders, or project itself may have changed. Revise the Introduction to reflect what you understand now and the project you completed.
 
 Pay particular attention to Moves 4 and 5. Does the need you identified in the proposal still make sense based on what you learned? Does your project goal accurately represent the work you ultimately completed? Update the roadmap as well so that it reflects the organization of your final report.
-
-<a id="planning-your-next-steps-1"></a>
 
 ### Planning Your Next Steps
 
@@ -80,13 +68,9 @@ Use the five moves to sketch the structure of your Introduction before you begin
 | **5. Our Project:** How does our project respond to the need we identified? What are we trying to accomplish? What is our project goal? What are our major objectives? |  |
 | **Look at the Introduction as a Whole:** Can we trace a clear path from the larger issue to the need for our project? Where does the story make a jump? What do we still need to research, discuss, or figure out? |  |
 
-<p class="worksheet-download"><a href="assets/worksheets/Worksheet_Planning%20your%20introduction.docx" download>Download worksheet: Planning your Introduction (Word .docx)</a></p>
-
-<a id="background-chapter"></a>
+[Download worksheet: Planning your Introduction (Word .docx)](assets/worksheets/Worksheet_Planning%20your%20introduction.docx)
 
 ## 2.2 Background Chapter
-
-<a id="what-is-the-purpose-of-the-background-chapter"></a>
 
 ### What is the purpose of the Background Chapter?
 
@@ -104,8 +88,6 @@ By the time you write your final report, you have developed a much deeper unders
 |----|----|
 | Help your team come up to speed on the topic and develop the knowledge needed to plan and conduct your research. | Help your reader understand the context and existing knowledge needed to make sense of the project and the research you completed. |
 
-<a id="researching-for-your-background-chapter"></a>
-
 ### Researching for your Background Chapter
 
 Developing your Background is an iterative process. You will not know everything you need to research at the beginning, and you do not need to finish your research before you start writing. What you learn will lead to new questions, and writing will often help you identify gaps in your understanding.
@@ -116,8 +98,6 @@ As you work through this process, look for patterns, different perspectives, are
 
 ![](assets/media/image3.png)
 
-<a id="synthesizing-your-research"></a>
-
 ### Synthesizing Your Research
 
 A strong Background is organized around ideas rather than individual sources. Your sources provide evidence for the ideas you are developing, but the sources themselves should not determine the organization of the chapter. As you write, look across your research. *Where do sources agree or disagree? What patterns emerge? What different perspectives are represented? What does the research collectively help you understand about the issue?*
@@ -126,15 +106,11 @@ Instead of writing a paragraph about one source followed by a paragraph about an
 
 The goal is to move from reporting what individual sources say to synthesizing what the research helps us understand about the issue.
 
-<a id="organizing-your-background"></a>
-
 ### Organizing Your Background
 
 ![](assets/media/image4.png)There is no single correct way to organize a Background chapter. Choosing the structure is one of the important decisions your team will make. Think about the story your Background needs to tell. *What does your reader need to understand first? What information builds on that understanding? How should the chapter eventually lead toward the research your team will conduct?*
 
 The following structures are useful starting points, but they are not required formats.
-
-<a id="the-funnel"></a>
 
 #### The Funnel
 
@@ -143,8 +119,6 @@ A funnel moves from the broader issue toward the specific context of your projec
 Ask:
 
 *Does understanding each section help the reader understand why the next section matters?*
-
-<a id="the-sandwich"></a>
 
 #### The Sandwich
 
@@ -164,8 +138,6 @@ What this research suggests for the local project
 
 Here, you begin with the specific local context, step back to consider broader research and examples, and then return to the project context with a stronger understanding of it. A sandwich structure can be useful when the project is strongly grounded in a particular place, organization, or community and readers need that context to understand why the broader research is relevant.
 
-<a id="the-diagram-illustrates-a-conceptual-framework-identifying-key-barriers-to-health-service-access-including-transportation-geographic-challenges-cultural-factors-and-communication-issues.-ai-generated-content-may-be-incorrect.a-thematic-structure"></a>
-
 ![The diagram illustrates a conceptual framework identifying key barriers to health service access, including transportation, geographic challenges, cultural factors, and communication issues. AI-generated content may be incorrect.](assets/media/image6.png)
 
 #### A Thematic Structure
@@ -174,33 +146,25 @@ For some projects, there is no obvious broad-to-narrow sequence. Instead, reader
 
 A thematic structure can work well when several related issues or perspectives need to be understood together.
 
-<a id="other-organization-options"></a>
-
 #### Other Organization Options
 
 Funnel, sandwich, and thematic are potential structures and not firm rules for how to organize your background chapter. Your project may need a variation, a combination of these approaches, or a different structure entirely. Whatever approach you choose, your team should be able to explain the logic behind the flow, and you should ensure that your writing includes transitions that help the reader understand the connection as you move from one section to the next.
 
 You can use descriptive section headings to help make that structure visible. Your headings should tell readers something about the ideas in the section rather than simply label broad categories such as *Previous Research* or *Project Host*. The Background should ultimately bring your reader to the point where your own research follows logically from what is already known and what still needs to be understood.
 
-<a id="related-guidance"></a>
-
 ### Related Guidance
 
 Several other parts of this guide address research and writing skills that you will use when developing your Background. You can refer to these sections as needed when you are writing your background chapter.
 
-- [Quoting, Paraphrasing, and Summarizing: Section 5.4](chapter-05.html#quoting-paraphrasing-and-summarizing)
+- [Quoting, Paraphrasing, and Summarizing: Section 5.4](chapter-05.md#quoting-paraphrasing-and-summarizing)
 
-- Citations and References: [Section 5.4](chapter-05.html#citations-and-references)
+- Citations and References: [Section 5.4](chapter-05.md#54-citations-and-references)
 
-- [Using AI in Research and Writing: Section 5.4](chapter-05.html#ai-generated-content-and-sources)
-
-<a id="writing-your-proposal-background"></a>
+- [Using AI in Research and Writing: Section 5.4](chapter-05.md#ai-generated-content-and-sources)
 
 ### Writing Your Proposal Background
 
 The background chapter in your proposal represents what your team understands before beginning your IQP. The process of conducting background research should help you come up to speed on the major issues surrounding your project and make informed decisions about the research you plan to conduct. By the end of ID2050, your Background should formally synthesize what your team has learned and provide a strong foundation for your proposed research.
-
-<a id="writing-your-final-report-background"></a>
 
 ### Writing Your Final Report Background
 
@@ -222,8 +186,6 @@ Your final Background Chapter should represent what your team understands about 
 |----|----|----|
 | **Where does the knowledge come from?** | Existing research, reports, documents, and other knowledge produced by others | Evidence your team collected and analyzed through your project research |
 | **Why is it included?** | To give readers the context and existing knowledge they need to understand the project | To show what your research helped you learn and how it answers your research questions |
-
-<a id="planning-your-next-steps-2"></a>
 
 ### Planning Your Next Steps
 
@@ -251,13 +213,9 @@ Then sketch a possible outline for your chapter. Focus first on the ideas and th
 | Next: |  |  |
 | Leading to our research: |  |  |
 
-<p class="worksheet-download"><a href="assets/worksheets/Worksheet_Planning%20your%20background%20chapter.docx" download>Download worksheet: Planning your Background Chapter (Word .docx)</a></p>
-
-<a id="methods-chapter"></a>
+[Download worksheet: Planning your Background Chapter (Word .docx)](assets/worksheets/Worksheet_Planning%20your%20background%20chapter.docx)
 
 ## 2.3 Methods Chapter
-
-<a id="what-is-the-purpose-of-the-methods-chapter"></a>
 
 ### What is the purpose of the Methods Chapter?
 
@@ -277,16 +235,9 @@ In your proposal, the Methods Chapter is your research plan. In your final repor
 |----|----|----|
 | Purpose of the Methods Chapter | Provide a detailed research plan that will guide your team's work during IQP. | Document what your team actually did and how you did it so readers can understand, evaluate, and potentially repeat your research. |
 
-<a id="developing-your-research-design"></a>
-
 ### Developing Your Research Design
 
-<p>A strong Methods Chapter begins before you select your methods. It
-can be tempting to begin by saying, "we will conduct interviews" or "we
-will create a survey." But selecting a method should not be the first
-step. First decide <u>what you are trying to accomplish</u> and <u>what
-you need to learn</u>. Then decide the methods you will use to learn
-it.</p>
+A strong Methods Chapter begins before you select your methods. It can be tempting to begin by saying, "we will conduct interviews" or "we will create a survey." But selecting a method should not be the first step. First decide what you are trying to accomplish and what you need to learn. Then decide the methods you will use to learn it.
 
 Your research design should create a logical connection between your:
 
@@ -294,22 +245,9 @@ Your research design should create a logical connection between your:
 
 Each part should help you make decisions about the next.
 
-<a id="project-goal"></a>
-
 ### Project Goal
 
-<p>Your project goal describes what your team ultimately hopes to
-accomplish through the project. It should respond to the problem or
-opportunity you established in your Introduction and Background. Your
-goal tells us where the project is going. It should be broad enough to
-capture the overall purpose of your project but specific enough that
-your team can realistically accomplish it during your IQP. A goal might
-generally take this form: <strong>To <u><em>[accomplish
-something]</em></u> for/with <em><u>[project host or community]</u></em>
-in order to <em><u>[larger purpose]. </u></em></strong>The exact wording
-will depend on your project.</p>
-
-<a id="research-objectives"></a>
+Your project goal describes what your team ultimately hopes to accomplish through the project. It should respond to the problem or opportunity you established in your Introduction and Background. Your goal tells us where the project is going. It should be broad enough to capture the overall purpose of your project but specific enough that your team can realistically accomplish it during your IQP. A goal might generally take this form: **To *\[accomplish something\]* for/with *\[project host or community\]* in order to *\[larger purpose\].*** The exact wording will depend on your project.
 
 ### Research Objectives
 
@@ -319,17 +257,11 @@ For example:
 
 Objective: ***Understand residents' current transportation behaviors and barriers to using public transit.*** (This is something you need to learn in order to accomplish your goal.)
 
-<p>is different from: <em>Conduct interviews with residents.</em>
-(Conducting interviews is a <u>method</u> your team might use to
-accomplish the objective.)</p>
+is different from: *Conduct interviews with residents.* (Conducting interviews is a method your team might use to accomplish the objective.)
 
-<p>It is also different from: <em>Develop a transportation
-guide.</em>(This might be a <u>deliverable</u> produced as a result of
-the project.)</p>
+It is also different from: *Develop a transportation guide.*(This might be a deliverable produced as a result of the project.)
 
 Keeping these distinctions clear will help you develop a research plan in which every activity has a purpose.
-
-<a id="research-questions"></a>
 
 ### Research Questions
 
@@ -349,65 +281,19 @@ Possible research questions might include:
 
 Research questions should be specific enough that you can begin asking: *What information would allow us to answer this question?* That question provides the bridge between your research questions and your methods.
 
-<a id="start-planning-your-research-goal-objectives-and-research-questions"></a>
-
 #### Start Planning Your Research Goal, Objectives, and Research Questions
 
 Before deciding which methods to use, take some time with your team to complete the table below, working from your project goal toward the information you need and where or from whom you might obtain that information.
 
-<table>
-<colgroup>
-<col style="width: 12%" />
-<col style="width: 18%" />
-<col style="width: 19%" />
-<col style="width: 26%" />
-<col style="width: 22%" />
-</colgroup>
-<thead>
-<tr>
-<th>Project Goal</th>
-<th>Research Objective</th>
-<th>Research Questions</th>
-<th>What information do we need?</th>
-<th>Who or what can provide it?</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td rowspan="5"></td>
-<td>1.</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>2.</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>3.</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
+| Project Goal | Research Objective | Research Questions | What information do we need? | Who or what can provide it? |
+|----|----|----|----|----|
+|  | 1\. |  |  |  |
+|  | 2\. |  |  |  |
+|  | 3\. |  |  |  |
+|  |  |  |  |  |
+|  |  |  |  |  |
 
-<p class="worksheet-download"><a href="assets/worksheets/WORKSHEET%20%E2%80%93%20Planning%20Your%20Goal%2C%20Objectives%2C%20and%20Research%20Questions.docx" download>Download worksheet: Planning Your Goal, Objectives, and Research Questions (Word .docx)</a></p>
+[Download worksheet: Planning Your Goal, Objectives, and Research Questions (Word .docx)](assets/worksheets/WORKSHEET%20%E2%80%93%20Planning%20Your%20Goal%2C%20Objectives%2C%20and%20Research%20Questions.docx)
 
 Look across your plan before moving on to methods.
 
@@ -420,8 +306,6 @@ Look across your plan before moving on to methods.
 - *Are any of your objectives actually methods, activities, or deliverables?*
 
 Once you know what you need to learn and what information you need, you are ready to decide what methods you will use to collect it.
-
-<a id="choosing-your-methods"></a>
 
 ### Choosing Your Methods
 
@@ -473,8 +357,6 @@ Do not assume that the reason for choosing a particular method will be obvious t
 
 Your justification should show that the method is an intentional research decision rather than simply a convenient activity.
 
-<a id="connect-research-questions-to-methods"></a>
-
 ### Connect Research Questions to Methods
 
 Use your research questions to work through the major decisions for each method before you begin writing the chapter.
@@ -487,11 +369,9 @@ Use your research questions to work through the major decisions for each method 
 |  |  |  |  |  |  |
 |  |  |  |  |  |  |
 
-<p class="worksheet-download"><a href="assets/worksheets/WORKSHEET%20%E2%80%93%20Connect%20Research%20Questions%20to%20Methods.docx" download>Download worksheet: Connect Research Questions to Methods (Word .docx)</a></p>
+[Download worksheet: Connect Research Questions to Methods (Word .docx)](assets/worksheets/WORKSHEET%20%E2%80%93%20Connect%20Research%20Questions%20to%20Methods.docx)
 
 A method may help answer more than one research question, and you may use more than one method to answer the same question. What matters is that you can explain the connection between what you need to learn and how you plan to learn it.
-
-<a id="planning-for-data-analysis"></a>
 
 ### Planning for Data Analysis
 
@@ -508,8 +388,6 @@ During ID2050, you may not yet know exactly how you will analyze your data. That
 - compare programs, policies, technologies, or potential solutions using defined criteria; or
 
 Your proposed analysis strategy can be relatively simple, but it should be specific enough to show that you have thought about how you will turn the information you collect into evidence that can help answer your research questions. For qualitative research in particular, analysis is often iterative. You may begin by coding the data to identify important or recurring ideas, combine related codes into categories, and eventually develop larger themes that help answer your research questions. You do not need to know what those codes or themes will be before you conduct the research. They will develop as you work with your data.
-
-<a id="data-analysis-in-your-final-report"></a>
 
 #### Data Analysis in Your Final Report
 
@@ -535,8 +413,6 @@ At the final report stage, students can often be confused about what aspects of 
 |----|----|
 | *Your procedures for analyzing data* | *What you learned from your data (your findings!)* |
 
-<a id="triangulating-your-research"></a>
-
 ### Triangulating Your Research
 
 Many IQPs rely on relatively small samples and primarily qualitative data. One way to strengthen your research is through **triangulation**, or using multiple methods or sources of evidence to investigate the same research question. For example, imagine your team is trying to understand barriers to participation in a community program. You might:
@@ -559,8 +435,6 @@ Triangulation does not mean that every research question needs three methods, or
 
 - Are we gathering perspectives from different people or stakeholder groups?
 
-<a id="planning-for-triangulation"></a>
-
 #### Planning for Triangulation
 
 For research questions where triangulation would strengthen your research, map out the different evidence you could collect.
@@ -571,17 +445,13 @@ For research questions where triangulation would strengthen your research, map o
 |  |  |  |  |
 |  |  |  |  |
 
-<p class="worksheet-download"><a href="assets/worksheets/WORKSHEET%20%E2%80%93%20Planning%20for%20Triangulation.docx" download>Download worksheet: Planning for Triangulation (Word .docx)</a></p>
+[Download worksheet: Planning for Triangulation (Word .docx)](assets/worksheets/WORKSHEET%20%E2%80%93%20Planning%20for%20Triangulation.docx)
 
 The goal is not to fill every box. Instead, use the table to identify where multiple forms of evidence could strengthen your ability to answer an important research question.
-
-<a id="considering-research-limitations"></a>
 
 ### Considering Research Limitations
 
 All research has limitations. A research limitation is something about your research design, data collection, sample, or analysis that affects what you can reasonably conclude from your evidence.
-
-<a id="limitations-in-your-proposal"></a>
 
 #### Limitations in Your Proposal
 
@@ -601,8 +471,6 @@ During ID2050, you will not know all of the limitations your research will ultim
 
 Thinking about potential limitations before you begin your research gives you an opportunity to strengthen your design. You might revise a data collection tool, change how you recruit participants, or use another method to triangulate your evidence. In your proposal, you can discuss anticipated limitations as part of the relevant method and explain how you plan to address or reduce them when possible. Alternatively, you could discuss limitations as a subsection of your Methods Chapter.
 
-<a id="limitations-in-your-final-report"></a>
-
 #### Limitations in Your Final Report
 
 By the end of your IQP, you will have a much clearer understanding of your research limitations because you know what actually happened. Some may be limitations you anticipated. Others may become apparent only after you collect or analyze your data. For example:
@@ -621,11 +489,7 @@ By the end of your IQP, you will have a much clearer understanding of your resea
 
 - evidence from different methods or stakeholder groups may not agree.
 
-<p>Identifying limitations does not necessarily mean your research is
-weak. Limitations help your readers understand the boundaries of your
-findings and what you can reasonably claim from your
-evidence<strong>.</strong> For each important limitation, consider two
-questions:</p>
+Identifying limitations does not necessarily mean your research is weak. Limitations help your readers understand the boundaries of your findings and what you can reasonably claim from your evidence. For each important limitation, consider two questions:
 
 *How did this limitation affect the evidence we collected?*
 
@@ -642,8 +506,6 @@ Research limitations do not necessarily need their own section in the final repo
 | **Where do they go?** | As a subsection in the Methods Chapter or as part of the discussion of the relevant method | With the relevant method and/or finding, depending on what the reader needs to understand |
 
 The goal is not to eliminate every limitation. That is rarely possible. The goal is to design your research thoughtfully, be transparent about its limitations, and make claims that are appropriate for the evidence you collected.
-
-<a id="research-ethics-and-the-irb"></a>
 
 ### Research Ethics and the IRB
 
@@ -673,15 +535,11 @@ These considerations should be part of your research design from the beginning, 
 
 The answers will be different for every project and method. The important thing is to consider these questions as you develop your research design.
 
-<a id="informed-consent"></a>
-
 #### Informed Consent
 
 People who participate in your research should understand what they are being asked to do and be able to make an informed and voluntary decision about whether to participate. Your consent process should provide participants with the information they need to make that decision, including the purpose of the research, what participation involves, potential risks, how their information will be used and protected, and that their participation is voluntary. WPI's informed-consent materials similarly emphasize explaining the purpose, procedures, foreseeable risks, and confidentiality of the research so that participants can make a fully informed decision.
 
 Think about informed consent as more than a form or script you need before you can collect data. The purpose is to ensure that participants understand what they are agreeing to before they agree to participate. Your consent materials should be consistent with the research described in your Methods Chapter and the questions or activities included in your data-collection tools.
-
-<a id="working-with-vulnerable-populations"></a>
 
 #### Working with Vulnerable Populations
 
@@ -692,8 +550,6 @@ The goal is not simply to identify a population as vulnerable. Ask:
 *What about this research or research context could create additional risk for participants, and how can we reduce that risk through our research design?*
 
 These considerations should influence how you design the method and should be discussed with your faculty advisors and addressed through the IRB process as appropriate.
-
-<a id="data-management-privacy-and-confidentiality"></a>
 
 #### Data Management, Privacy, and Confidentiality
 
@@ -721,8 +577,6 @@ Your responsibility to research participants does not end when you finish an int
 
 Be careful about the language you use when describing your plans. Anonymous and confidential are not the same thing. Anonymous data cannot be connected to an individual participant. Confidential data may be identifiable to the research team, but the team takes steps to protect participants' identities and control who can access that information. Do not promise participants anonymity if you are collecting information that allows your team to identify them. Instead, be specific about what information you will collect and how you will protect it.
 
-<a id="write-your-methods-in-active-voice"></a>
-
 ### Write Your Methods in Active Voice
 
 Write your Methods Chapter primarily in **active voice** so it is clear who is responsible for each research activity. In most cases, your team is conducting the research, so say so directly.
@@ -736,8 +590,6 @@ rather than:
 **Passive:** Approximately 20 residents will be interviewed to understand their experiences using public transportation.
 
 Active voice makes your research plan clearer and more direct. In your proposal, use active voice to explain **what your team plans to do**. In your final report, use it to document **what your team actually did**. The goal is to avoid hiding who made a decision or conducted an activity when that information matters.
-
-<a id="writing-your-proposal-methods"></a>
 
 ### Writing Your Proposal Methods
 
@@ -772,15 +624,11 @@ The goal is not to predict exactly what will happen each week. Research plans ch
 | Compare Auburn to similar completed CAPs | X | X | X |  |  |  |  |  |
 | Create and recommend CAP; seek approval |  |  |  |  | X | X | X | X |
 
-<a id="writing-your-final-report-methods"></a>
-
 ### Writing Your Final Report Methods
 
 In your final report, revise this section to describe what you actually did to protect research participants and their data. Update your proposal to reflect the consent procedures, confidentiality protections, and data-management practices you actually used. If your procedures changed during the project, the final report should accurately describe what ultimately occurred.
 
 Include the WPI IRB approval record number for your study in this section when applicable. Your final Methods Chapter should give readers enough information to understand how ethical considerations shaped your research without including participants' confidential or identifying information.
-
-<a id="organizing-and-writing-your-methods-chapter"></a>
 
 ### Organizing and Writing Your Methods Chapter
 
@@ -850,8 +698,6 @@ Your Methods Chapter should make the logic of your research design visible. Your
 
 7.  Timeline for the Project - Include a visual timeline showing the major activities needed to carry out your research and complete the project during IQP.
 
-<a id="from-proposal-to-final-report-1"></a>
-
 #### From Proposal to Final Report
 
 The basic organization of your Methods Chapter may remain similar from your proposal to your final report, but its purpose and level of detail will change.
@@ -870,8 +716,6 @@ The basic organization of your Methods Chapter may remain similar from your prop
 In your proposal, the Methods Chapter should function as an instruction manual for the research your team plans to conduct. You should be able to return to it during IQP and understand what you intended to do and why.
 
 In your final report, the chapter becomes a record of the research you actually conducted. Do not simply change the verbs in your proposal from future to past tense. Update participants, sample sizes, procedures, data-collection tools, analysis, limitations, and other details so that the chapter accurately represents what happened.
-
-<a id="data-collection-tools-and-supporting-materials"></a>
 
 #### Data-Collection Tools and Supporting Materials
 
@@ -897,8 +741,6 @@ The Methods Chapter should explain how and why you used these tools and how they
 
 The Methods Chapter should explain who you planned to interview, how participants were selected, what types of information the interview was designed to collect, how the interviews would be conducted and recorded, how responses would be analyzed, and why interviews were appropriate for the research question. The full interview protocol can then appear in the appendix.
 
-<a id="choosing-a-different-organization"></a>
-
 #### Choosing a Different Organization
 
 Organizing the chapter by objective works well for most projects, but it is not a required format. Some research designs may be easier to understand when organized by method or using another structure. Whatever organization you choose, make the logic of your research easy to follow. Your reader should be able to trace the connections among your:
@@ -907,20 +749,20 @@ Organizing the chapter by objective works well for most projects, but it is not 
 
 If those connections are difficult for your reader to follow, reconsider the organization of the chapter. The structure should help make your research design clear, not make the reader work to figure out how the pieces fit together.
 
-<a id="related-guidance-1"></a>
-
 ### Related Guidance
 
 Several other parts of this guide address skills and requirements that you will use when developing and documenting your methodology. Refer to these sections as needed:
 
-- Citations and References: [Section 5.4](chapter-05.html#citations-and-references)
+- Citations and References: [Section 5.4](chapter-05.md#54-citations-and-references)
 
 - [Data Collection Tools and Supporting Materials: Section 2.3](#data-collection-tools-and-supporting-materials)
 
-- [Appendices and Supplemental Materials: Section 4.3](chapter-04.html#appendices-and-supplemental-materials)
+- [Appendices and Supplemental Materials: Section 4.3](chapter-04.md#appendices-and-supplemental-materials)
 
 - WPI Institutional Review Board: [WPI IRB website](https://www.wpi.edu/offices/vice-provost-research/compliance/institutional-review-board)
 
 ---
 
-[Contents](index.html) | [Previous: Chapter 1 - Writing Through the IQP Process](chapter-01.html) | [Next: Chapter 3 - Making Sense of and Communicating What You Learned](chapter-03.html)
+- [Contents](index.md)
+- [Previous: Chapter 1 - Writing Through the IQP Process](chapter-01.md)
+- [Next: Chapter 3 - Making Sense of and Communicating What You Learned](chapter-03.md)

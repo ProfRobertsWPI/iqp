@@ -3,7 +3,12 @@ description: From Proposal to Final Report
 theme: minima
 markdown: kramdown
 kramdown:
-  auto_ids: false
+  input: GFM
+  auto_ids: true
+plugins:
+  - jekyll-relative-links
+relative_links:
+  enabled: true
 baseurl: /iqp
 url: https://profrobertswpi.github.io
 header_pages:

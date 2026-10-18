@@ -11,12 +11,12 @@ title: "IQP Writing Guide"
 
 ## Contents
 
-- [Chapter 1 - Writing Through the IQP Process](chapter-01.html)
-- [Chapter 2 - Building Your Research Story](chapter-02.html)
-- [Chapter 3 - Making Sense of and Communicating What You Learned](chapter-03.html)
-- [Chapter 4 - Completing the Proposal and Final Report](chapter-04.html)
-- [Chapter 5 - Documenting Your Project and Designing Your Report](chapter-05.html)
-- [Chapter 6 - Sharing and Extending Your Project](chapter-06.html)
-- [Resources](resources.html)
+- [Chapter 1 - Writing Through the IQP Process](chapter-01.md)
+- [Chapter 2 - Building Your Research Story](chapter-02.md)
+- [Chapter 3 - Making Sense of and Communicating What You Learned](chapter-03.md)
+- [Chapter 4 - Completing the Proposal and Final Report](chapter-04.md)
+- [Chapter 5 - Documenting Your Project and Designing Your Report](chapter-05.md)
+- [Chapter 6 - Sharing and Extending Your Project](chapter-06.md)
+- [Resources](resources.md)
 
 Each chapter includes a section contents list and links to the previous and next page.

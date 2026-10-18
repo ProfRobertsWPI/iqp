@@ -167,12 +167,12 @@ p, ul, ol { margin-top: 0; margin-bottom: 1rem; }
 .page-content table { display: block; max-width: 100%; overflow-x: auto; border-collapse: collapse; margin: 1.5rem 0; }
 th, td { padding: 0.75rem; border: 1px solid var(--cp-border); text-align: left; }
 th { background: var(--cp-surface-soft); }
-.worksheet-download a { font-weight: 600; }
+.page-content a[href*="assets/worksheets/"] { font-weight: 600; }
 blockquote { margin-left: 0; padding-left: 1rem; border-left: 1px solid var(--cp-border-strong); color: var(--cp-text-muted); }
 hr { border: 0; border-top: 1px solid var(--cp-border); margin: 2rem 0; }
 pre, code { font-family: Consolas, "Courier New", Courier, monospace; background: var(--cp-surface-soft); }
 pre { padding: 1rem; overflow-x: auto; }
-.page-content a[id] { scroll-margin-top: 1.5rem; }
+.page-content :is(h1, h2, h3, h4, h5, h6)[id] { scroll-margin-top: 1.5rem; }
 
 @media (max-width: 800px) {
   .site-shell { display: block; }

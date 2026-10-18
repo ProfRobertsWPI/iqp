@@ -66,6 +66,10 @@
         };
         highlightSection();
         window.addEventListener("hashchange", highlightSection);
+
+        for (const link of document.querySelectorAll('main a[href*="assets/worksheets/"][href$=".docx"]')) {
+          link.setAttribute("download", "");
+        }
       })();
     </script>
   </body>

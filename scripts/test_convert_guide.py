@@ -3,6 +3,7 @@
 from html.parser import HTMLParser
 import importlib.util
 import json
+import os
 from pathlib import Path
 import re
 import subprocess
@@ -38,7 +39,7 @@ class Page(HTMLParser):
             self.targets.append(attrs["id"])
         if tag == "a" and "href" in attrs:
             self.links.append(attrs["href"])
-            if "download" in attrs:
+            if attrs["href"].startswith("assets/worksheets/"):
                 self.downloads.append(attrs["href"])
         if tag == "img":
             self.images.append(attrs["src"])
@@ -68,7 +69,7 @@ class GuideTests(unittest.TestCase):
     def setUpClass(cls):
         cls.files, cls.media = CONVERTER.convert()
         cls.pages = {
-            name.removesuffix(".md") + ".html": Page(render(content, "gfm-gfm_auto_identifiers"))
+            name: Page(render(content.split("---\n", 2)[2], "gfm"))
             for name, content in cls.files.items()
             if name.endswith(".md")
         }
@@ -91,6 +92,52 @@ class GuideTests(unittest.TestCase):
                 self.assertEqual(len(re.findall(r"^# ", content, re.M)), 1)
                 self.assertNotIn("<!-- chapter-contents -->", content)
                 self.assertNotRegex(content, r"^#{1,6} !\[")
+                self.assertNotRegex(content, r"</?[a-zA-Z][a-zA-Z0-9]*(?:\s[^>]*|/?)>")
+                self.assertNotRegex(content, r"\]\([^)]*\.html(?:#|\))")
+
+    @unittest.skipUnless(os.environ.get("IQP_SITE_BUILD"), "Set IQP_SITE_BUILD to a Jekyll build directory.")
+    def test_jekyll_build_matches_markdown_links_and_anchors(self):
+        destination = Path(os.environ["IQP_SITE_BUILD"])
+        built_pages = {
+            name.removesuffix(".md") + ".html": Page(
+                (destination / (name.removesuffix(".md") + ".html")).read_text(encoding="utf-8")
+            )
+            for name in self.pages
+        }
+        for name, markdown in self.pages.items():
+            site_name = name.removesuffix(".md") + ".html"
+            built = built_pages[site_name]
+            with self.subTest(page=name):
+                self.assertEqual(len(built.targets), len(set(built.targets)))
+                for anchor in markdown.targets:
+                    self.assertIn(anchor, built.targets)
+                for href in built.links:
+                    url = urlsplit(href)
+                    if url.scheme or url.netloc:
+                        continue
+                    self.assertFalse(url.path.endswith(".md"), href)
+                    local = unquote(url.path).removeprefix("/iqp/")
+                    if not local:
+                        local = "index.html" if url.path else site_name
+                    if local.endswith(".html"):
+                        target = built_pages[local]
+                        if url.fragment:
+                            self.assertIn(unquote(url.fragment), target.targets, href)
+                    else:
+                        self.assertTrue((destination / local).is_file(), href)
+                for image in built.images:
+                    self.assertTrue((destination / unquote(image).removeprefix("/iqp/")).is_file(), image)
+                self.assertEqual(markdown.tables, built.tables)
+                self.assertEqual(len(markdown.images), len(built.images))
+                for href in markdown.links:
+                    url = urlsplit(href)
+                    if url.path.endswith(".md") and not url.scheme and not url.netloc:
+                        expected = "/iqp/" + url.path.removesuffix(".md") + ".html"
+                        if url.path == "index.md":
+                            expected = "/iqp/"
+                        if url.fragment:
+                            expected += "#" + url.fragment
+                        self.assertIn(expected, built.links)
 
     def test_local_links_and_images(self):
         for name, page in self.pages.items():
@@ -113,7 +160,7 @@ class GuideTests(unittest.TestCase):
         navigation = json.loads(self.files["_data/navigation.json"])
         self.assertEqual(len(navigation), 7)
         for chapter in navigation:
-            page = self.pages[chapter["url"].removeprefix("/")]
+            page = self.pages[chapter["url"].removeprefix("/").replace(".html", ".md")]
             self.assertTrue(chapter["sections"])
             for section in chapter["sections"]:
                 self.assertIn(section["anchor"], page.targets)
@@ -126,12 +173,12 @@ class GuideTests(unittest.TestCase):
 
     def test_worksheet_downloads_follow_matching_tables(self):
         downloads = []
-        expected_chapters = {"chapter-02.html": 5, "chapter-03.html": 2}
+        expected_chapters = {"chapter-02.md": 5, "chapter-03.md": 2}
         for name, page in self.pages.items():
             self.assertEqual(len(page.downloads), expected_chapters.get(name, 0))
             downloads.extend(unquote(url).removeprefix("assets/worksheets/") for url in page.downloads)
             matches = re.findall(
-                r'</table>\s*<p class="worksheet-download"><a href="([^"]+)" download>',
+                r'</table>\s*<p><a\s+href="([^"]+)">Download\s+worksheet:',
                 page.markup,
             )
             self.assertEqual(matches, page.downloads)
@@ -159,11 +206,11 @@ class GuideTests(unittest.TestCase):
             name = f"chapter-{index + 1:02d}.md" if index < 6 else "resources.md"
             original = Page(render(json.dumps({**self.source, "blocks": blocks[start:end]}), "json"))
             content = self.files[name].split("---\n", 2)[2]
-            content = content.removeprefix("\n[Contents](index.html)\n\n")
+            content = content.removeprefix("\n[Contents](index.md)\n\n")
             content = content.rsplit("\n\n---\n\n", 1)[0]
             content = re.sub(r"\*\*On this page\*\*\n\n(?:- .+\n)+", "", content)
-            content = re.sub(r'<p class="worksheet-download">.*?</p>', "", content)
-            converted = Page(render(content, "gfm-gfm_auto_identifiers"))
+            content = re.sub(r"^\[Download worksheet:.*$", "", content, flags=re.M)
+            converted = Page(render(content, "gfm"))
             with self.subTest(page=name):
                 expected = original.words()
                 for old, new in (
@@ -189,23 +236,23 @@ class GuideTests(unittest.TestCase):
         chapter3 = self.files["chapter-03.md"]
         chapter4 = self.files["chapter-04.md"]
         self.assertIn(
-            "[5.2 Figures, Tables, and Data Visualization](chapter-05.html#figures-tables-and-data-visualization)",
+            "[5.2 Figures, Tables, and Data Visualization](chapter-05.md#52-figures-tables-and-data-visualization)",
             chapter3,
         )
         for label, destination in (
-            ("Section 5.1", "chapter-05.html#designing-for-your-reader"),
-            ("Section 5.2", "chapter-05.html#figures-tables-and-data-visualization"),
-            ("Section 5.3", "chapter-05.html#formatting-and-document-mechanics"),
-            ("Section 5.4", "chapter-05.html#citations-and-references"),
-            ("Appendix A", "resources.html#appendix-a-cover-page-examples"),
-            ("B", "resources.html#appendix-b-required-wpi-title-page-for-final-report"),
-            ("Appendix D", "resources.html#appendix-d-example-meet-the-team-pages"),
+            ("Section 5.1", "chapter-05.md#51-designing-for-your-reader"),
+            ("Section 5.2", "chapter-05.md#52-figures-tables-and-data-visualization"),
+            ("Section 5.3", "chapter-05.md#53-formatting-and-document-mechanics"),
+            ("Section 5.4", "chapter-05.md#54-citations-and-references"),
+            ("Appendix A", "resources.md#appendix-a-cover-page-examples"),
+            ("B", "resources.md#appendix-b-required-wpi-title-page-for-final-report"),
+            ("Appendix D", "resources.md#appendix-d-example-meet-the-team-pages"),
             ("Authorship Statement", "#authorship-statement"),
-            ("earlier in this guide", "chapter-01.html#writing-as-a-team"),
+            ("earlier in this guide", "chapter-01.md#13-writing-as-a-team"),
         ):
             self.assertIn(f"[{label}]({destination})", chapter4)
         self.assertIn(
-            "[section 4.2](chapter-04.html#completing-your-id2050-research-proposal)",
+            "[section 4.2](chapter-04.md#42-completing-your-id2050-research-proposal)",
             self.files["resources.md"],
         )
         self.assertIn(
@@ -213,7 +260,7 @@ class GuideTests(unittest.TestCase):
             chapter2,
         )
         self.assertIn(
-            "[Appendices and Supplemental Materials: Section 4.3](chapter-04.html#appendices-and-supplemental-materials)",
+            "[Appendices and Supplemental Materials: Section 4.3](chapter-04.md#appendices-and-supplemental-materials)",
             chapter2,
         )
         self.assertIn("*See Appendix A for our interview questions.*", chapter2)
