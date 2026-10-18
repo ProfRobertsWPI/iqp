@@ -8,6 +8,7 @@ on:
       - "scripts/convert-guide.py"
       - "scripts/test_convert_guide.py"
       - "scripts/test-theme.cjs"
+      - "scripts/test-search.cjs"
       - "docs/**"
       - ".github/workflows/pages.yml"
   workflow_dispatch:
@@ -48,7 +49,7 @@ jobs:
           python scripts/convert-guide.py
           python scripts/convert-guide.py --check
           python -m unittest discover -s scripts -p 'test_*.py'
-          node --test scripts/test-theme.cjs
+          node --test scripts/test-theme.cjs scripts/test-search.cjs
       - uses: actions/configure-pages@v5
       - uses: actions/jekyll-build-pages@v1
         with:

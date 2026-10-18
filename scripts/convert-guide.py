@@ -422,10 +422,23 @@ def convert():
     home = [
         "# IQP Writing Guide",
         "*From Proposal to Final Report*",
-        pandoc({**document, "blocks": preface}),
+        "## Welcome",
+        "Welcome to the Interactive Qualifying Project (IQP) Writing Guide. "
+        "This guide supports you as you write your ID2050 research proposal and "
+        "IQP final report, from planning your research story to assembling and sharing your completed report.",
+        "## How to use this guide",
+        "Read the chapters in order or jump to the topic you need using the chapter links below. "
+        "On the website, the **Chapters and sections** sidebar lets you explore each chapter's sections; "
+        "on smaller screens, open the menu above the page. Use **Search the guide** in the header to find "
+        "topics across the guide, and **Dark mode** to choose a comfortable reading theme.",
+        "Each chapter includes an **On this page** section list and previous/next links. "
+        "Follow linked chapter and section references for related guidance. "
+        "Planning tables stay in the guide, with links below them to download editable Word worksheets. "
+        "Resources and Appendices A-D are collected on the Resources page.",
         "## Contents",
         "\n".join(f'- {link(page)}' for page in pages),
-        "Each chapter includes a section contents list and links to the previous and next page.",
+        "---",
+        pandoc({**document, "blocks": preface}),
     ]
     files["index.md"] = front_matter("IQP Writing Guide") + "\n\n".join(home) + "\n"
 

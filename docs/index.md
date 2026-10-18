@@ -7,7 +7,15 @@ title: "IQP Writing Guide"
 
 *From Proposal to Final Report*
 
-**Author’s Note and AI Disclosure:** *This guide draws on my experience teaching ID2050 and advising IQP projects since 2018, as well as writing guides, assignments, examples, and other instructional materials I have developed or adapted from materials generously shared by colleagues. In developing this guide, I used Microsoft CoPilot to help synthesize these materials, identify and address inconsistencies that had emerged over time, and improve the coherence, organization, and consistency of guidance across the ID2050 proposal and IQP process. While CoPilot was useful in the development of the guide, I am the author and take responsibility for its final content, including how the materials were selected, adapted, organized, and revised to reflect my teaching approach and the goals of ID2050 and the IQP.*
+## Welcome
+
+Welcome to the Interactive Qualifying Project (IQP) Writing Guide. This guide supports you as you write your ID2050 research proposal and IQP final report, from planning your research story to assembling and sharing your completed report.
+
+## How to use this guide
+
+Read the chapters in order or jump to the topic you need using the chapter links below. On the website, the **Chapters and sections** sidebar lets you explore each chapter's sections; on smaller screens, open the menu above the page. Use **Search the guide** in the header to find topics across the guide, and **Dark mode** to choose a comfortable reading theme.
+
+Each chapter includes an **On this page** section list and previous/next links. Follow linked chapter and section references for related guidance. Planning tables stay in the guide, with links below them to download editable Word worksheets. Resources and Appendices A-D are collected on the Resources page.
 
 ## Contents
 
@@ -19,4 +27,6 @@ title: "IQP Writing Guide"
 - [Chapter 6 - Sharing and Extending Your Project](chapter-06.md)
 - [Resources](resources.md)
 
-Each chapter includes a section contents list and links to the previous and next page.
+---
+
+**Author’s Note and AI Disclosure:** *This guide draws on my experience teaching ID2050 and advising IQP projects since 2018, as well as writing guides, assignments, examples, and other instructional materials I have developed or adapted from materials generously shared by colleagues. In developing this guide, I used Microsoft CoPilot to help synthesize these materials, identify and address inconsistencies that had emerged over time, and improve the coherence, organization, and consistency of guidance across the ID2050 proposal and IQP process. While CoPilot was useful in the development of the guide, I am the author and take responsibility for its final content, including how the materials were selected, adapted, organized, and revised to reflect my teaching approach and the goals of ID2050 and the IQP.*

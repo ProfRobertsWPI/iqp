@@ -64,6 +64,8 @@ html[data-theme="dark"] {
   --cp-accent-soft: rgba(172, 43, 55, 0.08);
   --cp-highlight: rgba(172, 43, 55, 0.12);
   --cp-link: #ac2b37;
+  --cp-header-bg: #ac2b37;
+  --cp-header-fg: #ffffff;
   --wpi-reading-font: "Myriad Pro", Verdana, "Segoe UI", Aptos, Calibri, -apple-system, BlinkMacSystemFont, sans-serif;
   --wpi-heading-font: "Minion Pro", Georgia, "Times New Roman", serif;
 }
@@ -102,6 +104,36 @@ a:hover { color: var(--cp-accent-hover); }
   background: var(--cp-surface);
 }
 .skip-link:focus { top: 1rem; }
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 1rem 1.5rem;
+  background: var(--cp-header-bg);
+  color: var(--cp-header-fg);
+}
+.header-brand { display: grid; gap: 0.125rem; color: inherit; text-decoration: none; font-weight: 700; font-size: 1.25rem; line-height: 1.4; }
+.header-brand:hover { color: inherit; text-decoration: underline; }
+.header-institution { font-size: 0.6875rem; letter-spacing: 0.06em; text-transform: uppercase; }
+.header-controls { display: flex; align-items: center; gap: 1rem; }
+.site-header :focus-visible { outline-color: var(--cp-header-fg); }
+.guide-search { position: relative; width: min(26rem, 35vw); color: var(--cp-text); }
+.search-label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+.search-field { display: flex; border: 1px solid var(--cp-border-strong); border-radius: 0.625rem; background: var(--cp-surface); }
+.search-field input { min-width: 0; width: 100%; min-height: 44px; padding: 0.625rem 0.75rem; border: 0; border-radius: 0.625rem; background: var(--cp-surface); color: var(--cp-text); font: inherit; }
+.search-field input::placeholder { color: var(--cp-text-muted); opacity: 1; }
+.search-close { min-height: 44px; padding: 0.5rem 0.75rem; border: 0; border-radius: 0.625rem; background: var(--cp-surface); color: var(--cp-link); font: inherit; cursor: pointer; }
+.search-output { position: absolute; top: calc(100% + 0.5rem); right: 0; z-index: 5; width: min(36rem, 80vw); max-height: 65dvh; overflow-y: auto; padding: 1rem; border: 1px solid var(--cp-border); border-radius: 0.625rem; background: var(--cp-surface); box-shadow: var(--cp-shadow); }
+.search-output :focus-visible, .search-field :focus-visible { outline-color: var(--cp-accent); outline-offset: -3px; }
+.search-status { color: var(--cp-text-muted); margin-bottom: 0.5rem; font-size: 0.875rem; }
+.search-results { list-style: none; margin: 0; padding: 0; }
+.search-results a { display: block; padding: 0.75rem 0.5rem; border-top: 1px solid var(--cp-border); text-decoration: none; }
+.search-results a:hover { background: var(--cp-accent-soft); }
+.search-results strong, .search-results span { display: block; }
+.search-results span { margin-top: 0.25rem; color: var(--cp-text-muted); font-size: 0.875rem; }
+.search-noscript { margin: 0; font-size: 0.875rem; }
+.site-header .theme-toggle { width: auto; margin: 0; white-space: nowrap; }
 .site-shell { display: grid; grid-template-columns: 20rem minmax(0, 1fr); }
 .sidebar {
   position: sticky;
@@ -175,6 +207,12 @@ pre { padding: 1rem; overflow-x: auto; }
 .page-content :is(h1, h2, h3, h4, h5, h6)[id] { scroll-margin-top: 1.5rem; }
 
 @media (max-width: 800px) {
+  .site-header { flex-wrap: wrap; padding: 1rem; gap: 1rem; }
+  .header-controls { width: 100%; gap: 0.75rem; }
+  .guide-search { width: auto; flex: 1; min-width: 0; }
+  .search-output { left: 0; right: auto; width: calc(100vw - 2rem); }
+  .header-brand { font-size: 1.125rem; }
+  .site-header .theme-toggle { gap: 0.5rem; font-size: 0.875rem; }
   .site-shell { display: block; }
   .sidebar { position: static; height: auto; padding: 1rem; border-right: 0; border-bottom: 1px solid var(--cp-border); }
   .site-description { margin-bottom: 0.75rem; }
@@ -197,6 +235,6 @@ pre { padding: 1rem; overflow-x: auto; }
     --cp-border: #a9b0b7;
   }
   .site-shell { display: block; }
-  .sidebar, .skip-link { display: none; }
+  .sidebar, .skip-link, .site-header { display: none; }
   .page-content { max-width: none; padding: 0; }
 }

@@ -157,7 +157,8 @@ format, not an alternative to making durable edits in Word.
 
 ## Site structure
 
-- `docs/index.md`: contents and the original author's note / AI disclosure.
+- `docs/index.md`: welcome, navigation guidance, chapter contents, and the
+  original author's note / AI disclosure at the bottom.
 - `docs/chapter-01.md` through `docs/chapter-06.md`: one page per chapter.
 - `docs/resources.md`: resources and Appendices A-D.
 - `docs/assets/media/`: the images embedded in the Word document.
@@ -177,6 +178,22 @@ link. On small screens the navigation becomes a collapsible menu above the
 content. Navigation data in `docs/_data/navigation.json` is regenerated from the
 Word headings along with the chapter pages. The shared layout and responsive
 styles live in `docs/_layouts/default.html` and `docs/assets/site.css`.
+
+The shared top header includes the guide title, light/dark toggle, and
+**Search the guide**. Search matches words across all eight guide pages,
+prioritizes page-title matches, and shows links with text snippets. Multiple
+search words must all occur on a page. Tab moves through result links; Escape
+or **Close** dismisses results. Search runs in the browser without sending
+queries to an external service. It requires JavaScript; chapter navigation
+still works without it. Worksheet file contents are not indexed.
+
+Jekyll builds `docs/search.json` from pages using the shared `default` layout,
+so the index updates on every publication, including Word-triggered updates.
+Search behavior lives in `docs/assets/search.js`; run its checks with
+`node --test scripts\test-search.cjs`. Welcome/navigation text is maintained
+in the converter's `home` list, while the author's original note remains
+sourced from Word. The reference site's header/search pattern is adapted to
+the existing WPI theme rather than replacing the site's generator or sidebar.
 
 The seven planning tables in Chapters 2 and 3 remain in the guide, with a
 download link immediately below each one for its matching Word worksheet in
@@ -223,7 +240,7 @@ recreated WPI logos are distributed. Dark-mode surfaces and lightened crimson
 accents are site-specific accessibility adaptations, not official WPI brand
 colors.
 
-The **Dark mode** toggle in the sidebar switches light/dark themes and saves
+The **Dark mode** toggle in the header switches light/dark themes and saves
 the preference in the reader's browser across pages and visits. Before a choice
 is saved, the site follows the system color scheme, including live changes.
 If browser storage is blocked, switching still works on the current page.
@@ -256,7 +273,8 @@ Run theme behavior checks with `node --test scripts\test-theme.cjs`.
 
 The workflow in `.github/workflows/pages.yml` runs when a push to `main`
 changes the source Word document, `scripts/convert-guide.py`,
-`scripts/test_convert_guide.py`, `scripts/test-theme.cjs`, `docs/**`, or the
+`scripts/test_convert_guide.py`, `scripts/test-theme.cjs`,
+`scripts/test-search.cjs`, `docs/**`, or the
 workflow itself. It can also be started manually from
 **Actions > Deploy writing guide to GitHub Pages > Run workflow**, selecting
 `main`. Manual runs also regenerate, check, commit, and publish. Runs on other

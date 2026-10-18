@@ -95,9 +95,33 @@ class GuideTests(unittest.TestCase):
                 self.assertNotRegex(content, r"</?[a-zA-Z][a-zA-Z0-9]*(?:\s[^>]*|/?)>")
                 self.assertNotRegex(content, r"\]\([^)]*\.html(?:#|\))")
 
+    def test_home_welcomes_readers_before_author_note(self):
+        home = self.files["index.md"]
+        self.assertLess(home.index("## Welcome"), home.index("## How to use this guide"))
+        self.assertLess(home.index("## Contents"), home.index("Author"))
+        contents_start = next(
+            i for i, block in enumerate(self.source["blocks"])
+            if block["t"] == "Header" and CONVERTER.text(block["c"][2]) == "Table of Contents"
+        )
+        preface = CONVERTER.normalize_markdown([
+            block for block in self.source["blocks"][:contents_start]
+            if CONVERTER.meaningful(block)
+        ])
+        self.assertTrue(home.rstrip().endswith(CONVERTER.pandoc({**self.source, "blocks": preface})))
+
     @unittest.skipUnless(os.environ.get("IQP_SITE_BUILD"), "Set IQP_SITE_BUILD to a Jekyll build directory.")
     def test_jekyll_build_matches_markdown_links_and_anchors(self):
         destination = Path(os.environ["IQP_SITE_BUILD"])
+        search_index = json.loads((destination / "search.json").read_text(encoding="utf-8"))
+        self.assertEqual(len(search_index), len(self.pages))
+        self.assertEqual({page["url"] for page in search_index}, {
+            "/iqp/" if name == "index.md" else "/iqp/" + name.removesuffix(".md") + ".html"
+            for name in self.pages
+        })
+        for entry in search_index:
+            self.assertTrue(entry["title"])
+            self.assertTrue(entry["text"])
+            self.assertNotIn("<h1", entry["text"])
         built_pages = {
             name.removesuffix(".md") + ".html": Page(
                 (destination / (name.removesuffix(".md") + ".html")).read_text(encoding="utf-8")
