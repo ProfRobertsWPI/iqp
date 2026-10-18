@@ -99,6 +99,8 @@ class GuideTests(unittest.TestCase):
         home = self.files["index.md"]
         self.assertLess(home.index("## Welcome"), home.index("## How to use this guide"))
         self.assertLess(home.index("## Contents"), home.index("Author"))
+        self.assertIn("](assets/cover/iqp-writing-guide.png)", home)
+        self.assertTrue((CONVERTER.OUTPUT / "assets" / "cover" / "iqp-writing-guide.png").is_file())
         contents_start = next(
             i for i, block in enumerate(self.source["blocks"])
             if block["t"] == "Header" and CONVERTER.text(block["c"][2]) == "Table of Contents"
@@ -178,7 +180,11 @@ class GuideTests(unittest.TestCase):
                     if url.fragment:
                         self.assertIn(unquote(url.fragment), target.targets)
                 for image in page.images:
-                    self.assertIn(image, self.media)
+                    if image == "assets/cover/iqp-writing-guide.png":
+                        self.assertEqual(name, "index.md")
+                        self.assertTrue((CONVERTER.OUTPUT / image).is_file())
+                    else:
+                        self.assertIn(image, self.media)
 
     def test_sidebar_covers_chapters_and_sections(self):
         navigation = json.loads(self.files["_data/navigation.json"])

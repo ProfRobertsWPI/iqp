@@ -33,6 +33,7 @@ references to that filename below identify the file, not an editing role.
 | --- | --- | --- |
 | Fix text, lists, captions, or existing table content | The source Word document | Merge to `main`; Actions regenerates and publishes. |
 | Add or replace a guide image | Insert/embed it in the Word document | Merge to `main`; images are extracted to `docs/assets/media/`. |
+| Replace the landing-page cover | Export the complete approved cover from Figma and replace `docs/assets/cover/iqp-writing-guide.png` | Keep the filename; it is a separately maintained site asset, not extracted from Word. |
 | Add a section within an existing chapter | Add a Word heading, using the existing numbering and heading styles | Actions rebuilds chapter contents and sidebar links. Review links to renamed headings. |
 | Replace an existing downloadable worksheet | Replace its file in `docs/assets/worksheets/`, keeping the exact filename | Commit and publish the replacement; no conversion is needed if nothing else changes. |
 | Add or rename a worksheet, or change its associated table's header | Worksheet folder, Word table, and `WORKSHEETS` mapping in the converter | A technical maintainer must update the mapping, regenerate, and update affected tests. |
@@ -196,7 +197,7 @@ Search behavior lives in `docs/assets/search.js`; run its checks with
 `node --test scripts\test-search.cjs`. Welcome/navigation text is maintained
 in the converter's `home` list, while the author's original note remains
 sourced from Word. The reference site's header/search pattern is adapted to
-the existing WPI theme rather than replacing the site's generator or sidebar.
+the cover-inspired theme rather than replacing the site's generator or sidebar.
 
 The seven planning tables in Chapters 2 and 3 remain in the guide, with a
 download link immediately below each one for its matching Word worksheet in
@@ -232,16 +233,40 @@ The site adds the download attribute to worksheet links in the shared layout;
 in Markdown views, the same links open the Word file for download using the
 viewer's normal file controls.
 
-## WPI styling and color themes
+## Cover art, site colors, and themes
 
-The site uses WPI crimson (`#AC2B37`) and gray (`#A9B0B7`) from the
-[WPI Logo Usage Quick Reference Guide](https://www.wpi.edu/sites/default/files/docs/Offices/Marketing-Communications/WPILogoUsage_QuickReferenceGuide.pdf).
-Headings use Minion Pro when locally installed, with Georgia as a serif
-fallback. Body text uses Myriad Pro when installed, with Verdana and system
-sans-serif fallbacks; no licensed font files or
-recreated WPI logos are distributed. Dark-mode surfaces and lightened crimson
-accents are site-specific accessibility adaptations, not official WPI brand
-colors.
+The author selected the [Figma cover design](https://www.figma.com/design/gBEn5y4tMGH2LACd53AM1T)
+(frame `1:2`, **IQP Writing Guide Cover**) as the visual direction. The complete
+cover is exported to `docs/assets/cover/iqp-writing-guide.png`, displayed on
+the landing page, and linked for full-size viewing. It is stored locally so
+readers do not need Figma access and the site does not depend on expiring export
+URLs. The cover's title, subtitle, and author credit are retained as artwork;
+page titles and navigation remain accessible text outside the image.
+
+To replace it, export the complete frame (including its text layers) from
+Figma and replace that PNG under the same filename. Do not place it in
+`assets/media/`, which is reserved for images extracted from Word. The
+converter generates the landing-page image/link but never overwrites this
+separate cover asset. If the artwork or filename changes, update its
+descriptive alternative text and references in the converter, plus affected
+tests, before regenerating.
+
+At the author's request, the earlier WPI crimson/gray branding was replaced
+by a palette inspired by the cover:
+
+| Role | Light theme | Dark theme |
+| --- | --- | --- |
+| Reading background | Cream `#F5EFDC` | Deep navy `#152735` |
+| Main text | Navy `#142F40` | Cream `#F5EFDC` |
+| Links and active navigation | Teal `#28676B` | Light sage/teal `#A4CCC3` |
+| Header | Navy `#142F40` with cream text | Same navy and cream |
+
+The cover's gold informs highlight accents, not small body text. Colors are
+maintained as semantic `--cp-*` variables in `docs/assets/site.css`; dark-mode
+colors are readability adaptations rather than exact samples from the image.
+This is a cover-inspired site palette, not an official WPI brand treatment.
+Headings use Georgia and body text uses Verdana with system fallbacks; no
+licensed fonts or recreated WPI logos are distributed.
 
 The **Dark mode** toggle in the header switches light/dark themes and saves
 the preference in the reader's browser across pages and visits. Before a choice
@@ -378,7 +403,7 @@ These decisions were made while creating and refining this edition:
 | Use native GitHub-flavored Markdown | Pages remain readable in the repository as well as on the website. Merged cells and multiline cell layout are simplified; Word-only underlining is removed. Complex new tables may require converter work. |
 | Use `.md` links and automatic heading IDs | Repository links work without a site build; Jekyll's relative-link plugin rewrites them for the published site. Heading changes can change public anchors. |
 | Link guide references, not every mention of a chapter/appendix | References describing students' own reports are not necessarily destinations in this guide. Specific phrases and three stale source references have explicit conversion rules, described above. |
-| Keep site presentation outside chapter content | WPI colors/fonts, responsive navigation, worksheet download behavior, and light/dark mode live in the shared layout/CSS/JavaScript. No licensed fonts or recreated WPI logos are distributed. |
+| Keep site presentation outside chapter content | Cover-inspired colors, responsive navigation, worksheet download behavior, and light/dark mode live in the shared layout/CSS/JavaScript. The author chose the cover palette over the initial WPI branding. No licensed fonts or recreated WPI logos are distributed. |
 | Automatically regenerate and publish from `main` | Initially conversion was local; the workflow now converts Word, validates, commits generated output, and deploys in one run. The repository's Markdown stays in sync with the site. Local Python/Pandoc and Ruby are optional preview tools. |
 
 The conversion-time reference corrections do not modify the original Word

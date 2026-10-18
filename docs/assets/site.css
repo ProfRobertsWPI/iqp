@@ -52,38 +52,44 @@ html[data-theme="dark"] {
   --cp-highlight: rgba(253, 142, 161, 0.12);
 }
 
-/* WPI brand colors; dark-mode accents are lightened for readable contrast. */
+/* Cover-inspired palette; dark-mode accents are lightened for readable contrast. */
 :root {
-  --cp-bg: #ffffff;
-  --cp-bg-elevated: #f4f5f6;
-  --cp-border: #d3d7da;
-  --cp-border-strong: #a9b0b7;
-  --cp-text: #222222;
-  --cp-text-muted: #50575e;
-  --cp-accent: #ac2b37;
-  --cp-accent-hover: #87222b;
-  --cp-accent-soft: rgba(172, 43, 55, 0.08);
-  --cp-highlight: rgba(172, 43, 55, 0.12);
-  --cp-link: #ac2b37;
-  --cp-header-bg: #ac2b37;
-  --cp-header-fg: #ffffff;
-  --wpi-reading-font: "Myriad Pro", Verdana, "Segoe UI", Aptos, Calibri, -apple-system, BlinkMacSystemFont, sans-serif;
-  --wpi-heading-font: "Minion Pro", Georgia, "Times New Roman", serif;
+  --cp-bg: #f5efdc;
+  --cp-bg-elevated: #ebe6d6;
+  --cp-surface: #fffaf0;
+  --cp-surface-soft: #e5ebe4;
+  --cp-border: #c5ccbf;
+  --cp-border-strong: #748e89;
+  --cp-text: #142f40;
+  --cp-text-muted: #425f62;
+  --cp-text-soft: #526765;
+  --cp-accent: #28676b;
+  --cp-accent-hover: #194c50;
+  --cp-accent-fg: #fffaf0;
+  --cp-accent-soft: rgba(40, 103, 107, 0.09);
+  --cp-highlight: rgba(208, 157, 77, 0.2);
+  --cp-link: #28676b;
+  --cp-header-bg: #142f40;
+  --cp-header-fg: #f5efdc;
+  --guide-reading-font: Verdana, "Segoe UI", Aptos, Calibri, -apple-system, BlinkMacSystemFont, sans-serif;
+  --guide-heading-font: Georgia, "Times New Roman", serif;
 }
 html[data-theme="dark"] {
-  --cp-bg: #191b1e;
-  --cp-bg-elevated: #22252a;
-  --cp-surface: #282c31;
-  --cp-surface-soft: #2e3339;
-  --cp-border: #454b53;
-  --cp-border-strong: #a9b0b7;
-  --cp-text: #f0f1f2;
-  --cp-text-muted: #bdc3ca;
-  --cp-accent: #ff9ca5;
-  --cp-accent-hover: #ffc2c8;
-  --cp-accent-soft: rgba(255, 156, 165, 0.12);
-  --cp-highlight: rgba(255, 156, 165, 0.16);
-  --cp-link: #ff9ca5;
+  --cp-bg: #152735;
+  --cp-bg-elevated: #1a303d;
+  --cp-surface: #203b46;
+  --cp-surface-soft: #29454e;
+  --cp-border: #48646b;
+  --cp-border-strong: #90aaa4;
+  --cp-text: #f5efdc;
+  --cp-text-muted: #bdcec5;
+  --cp-text-soft: #bdcec5;
+  --cp-accent: #a4ccc3;
+  --cp-accent-hover: #d2e5dc;
+  --cp-accent-fg: #142f40;
+  --cp-accent-soft: rgba(164, 204, 195, 0.12);
+  --cp-highlight: rgba(208, 157, 77, 0.2);
+  --cp-link: #a4ccc3;
 }
 
 * { box-sizing: border-box; }
@@ -91,7 +97,7 @@ body {
   margin: 0;
   background: var(--cp-bg);
   color: var(--cp-text);
-  font: 1rem/1.75 var(--wpi-reading-font);
+  font: 1rem/1.75 var(--guide-reading-font);
 }
 a { color: var(--cp-link); text-underline-offset: 0.2em; }
 a:hover { color: var(--cp-accent-hover); }
@@ -149,7 +155,7 @@ a:hover { color: var(--cp-accent-hover); }
   background: var(--cp-bg-elevated);
 }
 .institution-name { color: var(--cp-accent); font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 0.75rem; }
-.site-title { color: var(--cp-text); font-family: var(--wpi-heading-font); font-size: 1.75rem; font-weight: 700; text-decoration: none; line-height: 1.2; }
+.site-title { color: var(--cp-text); font-family: var(--guide-heading-font); font-size: 1.75rem; font-weight: 700; text-decoration: none; line-height: 1.2; }
 .site-description { color: var(--cp-text-muted); margin: 0.5rem 0 1.5rem; }
 .theme-toggle {
   display: flex;
@@ -192,7 +198,7 @@ nav a:hover { background: var(--cp-surface-soft); color: var(--cp-accent-hover);
 nav a[aria-current] { background: var(--cp-accent-soft); color: var(--cp-accent); font-weight: 600; }
 .page-content { width: 100%; max-width: 58rem; min-width: 0; padding: 2rem 3rem 4rem; margin: 0 auto; overflow-wrap: break-word; }
 h1, h2, h3, h4, h5, h6 { line-height: 1.25; margin: 2rem 0 1rem; }
-h1, h2 { font-family: var(--wpi-heading-font); }
+h1, h2 { font-family: var(--guide-heading-font); }
 h1 { font-size: 2.5rem; margin-top: 0; }
 h2 { font-size: 1.875rem; color: var(--cp-accent); }
 h3 { font-size: 1.25rem; }
@@ -200,6 +206,7 @@ h4 { font-size: 1.125rem; }
 p, ul, ol { margin-top: 0; margin-bottom: 1rem; }
 .page-content li > p { margin-bottom: 0.5rem; }
 .page-content img { max-width: 100%; height: auto; }
+.page-content img[src*="assets/cover/"] { display: block; width: min(100%, 23rem); margin: 1.5rem auto 0.75rem; border-radius: 0.625rem; border: 1px solid var(--cp-border); }
 .page-content table { display: block; max-width: 100%; overflow-x: auto; border-collapse: collapse; margin: 1.5rem 0; }
 th, td { padding: 0.75rem; border: 1px solid var(--cp-border); text-align: left; }
 th { background: var(--cp-surface-soft); }
@@ -236,9 +243,9 @@ pre { padding: 1rem; overflow-x: auto; }
     --cp-text: #000000;
     --cp-text-muted: #222222;
     --cp-surface-soft: #f5f5f5;
-    --cp-accent: #ac2b37;
-    --cp-link: #ac2b37;
-    --cp-border: #a9b0b7;
+    --cp-accent: #28676b;
+    --cp-link: #28676b;
+    --cp-border: #748e89;
   }
   .site-shell { display: block; }
   .sidebar, .skip-link, .site-header { display: none; }

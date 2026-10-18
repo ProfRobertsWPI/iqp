@@ -7,6 +7,10 @@ title: "IQP Writing Guide"
 
 *From Proposal to Final Report*
 
+[![IQP Writing Guide cover: a winding path connects research, collaboration, and writing on a cream, navy, and teal background.](assets/cover/iqp-writing-guide.png)](assets/cover/iqp-writing-guide.png)
+
+[View the cover full-size](assets/cover/iqp-writing-guide.png)
+
 ## Welcome
 
 Welcome to the Interactive Qualifying Project (IQP) Writing Guide. This guide supports you as you write your ID2050 research proposal and IQP final report, from planning your research story to assembling and sharing your completed report.
