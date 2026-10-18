@@ -64,6 +64,13 @@
     <script src="{{ '/assets/search.js' | relative_url }}" defer></script>
     <script>
       (() => {
+        const header = document.querySelector(".site-header");
+        const measureHeader = () => {
+          document.documentElement.style.setProperty("--site-header-height", `${Math.ceil(header.getBoundingClientRect().height)}px`);
+        };
+        measureHeader();
+        new ResizeObserver(measureHeader).observe(header);
+
         const panel = document.querySelector(".navigation-panel");
         const compact = window.matchMedia("(max-width: 800px)");
         const resizeMenu = () => { panel.open = !compact.matches; };

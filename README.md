@@ -180,7 +180,10 @@ Word headings along with the chapter pages. The shared layout and responsive
 styles live in `docs/_layouts/default.html` and `docs/assets/site.css`.
 
 The shared top header includes the guide title, light/dark toggle, and
-**Search the guide**. Search matches words across all eight guide pages,
+**Search the guide** and stays visible while scrolling. Its measured height
+offsets the desktop sidebar and section-link targets so headings are not
+hidden behind it, including when the header wraps on small screens.
+Search matches words across all eight guide pages,
 prioritizes page-title matches, and shows links with text snippets. Multiple
 search words must all occur on a page. Tab moves through result links; Escape
 or **Close** dismisses results. Search runs in the browser without sending
