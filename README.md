@@ -30,6 +30,27 @@ download link immediately below each one for its matching Word worksheet in
 mapping in `scripts/convert-guide.py` and reports missing files or unmatched
 tables instead of generating broken download links.
 
+## WPI styling and color themes
+
+The site uses WPI crimson (`#AC2B37`) and gray (`#A9B0B7`) from the
+[WPI Logo Usage Quick Reference Guide](https://www.wpi.edu/sites/default/files/docs/Offices/Marketing-Communications/WPILogoUsage_QuickReferenceGuide.pdf).
+Headings use Minion Pro when locally installed, with Georgia as a serif
+fallback. Body text uses Myriad Pro when installed, with Verdana and system
+sans-serif fallbacks; no licensed font files or
+recreated WPI logos are distributed. Dark-mode surfaces and lightened crimson
+accents are site-specific accessibility adaptations, not official WPI brand
+colors.
+
+The **Dark mode** toggle in the sidebar switches light/dark themes and saves
+the preference in the reader's browser across pages and visits. Before a choice
+is saved, the site follows the system color scheme, including live changes.
+If browser storage is blocked, switching still works on the current page.
+Printing uses a light palette regardless of the screen theme. Theme behavior
+lives in `docs/assets/theme.js` and runs before the stylesheet to avoid a flash
+of the wrong theme.
+
+Run theme behavior checks with `node --test scripts\test-theme.cjs`.
+
 ## Publish on GitHub Pages
 
 1. Merge these files into `main`.

@@ -1,14 +1,7 @@
 <!DOCTYPE html>
 <html lang="{{ page.lang | default: site.lang | default: 'en' }}">
   <head>
-    <script>
-      (() => {
-        const param = new URLSearchParams(window.location.search).get("scoutTheme");
-        const theme =
-          param || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
-        document.documentElement.setAttribute("data-theme", theme);
-      })();
-    </script>
+    <script src="{{ '/assets/theme.js' | relative_url }}"></script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     {% seo %}
@@ -18,8 +11,13 @@
     <a class="skip-link" href="#main-content">Skip to content</a>
     <div class="site-shell">
       <aside class="sidebar">
+        <p class="institution-name">Worcester Polytechnic Institute</p>
         <a class="site-title" href="{{ '/' | relative_url }}">{{ site.title | escape }}</a>
         <p class="site-description">{{ site.description | escape }}</p>
+        <button class="theme-toggle" type="button" aria-pressed="false" hidden>
+          <span>Dark mode</span>
+          <span class="theme-switch" aria-hidden="true"></span>
+        </button>
         <details class="navigation-panel" open>
           <summary class="menu-toggle">Chapters and sections</summary>
           <nav aria-label="Chapters and sections">
